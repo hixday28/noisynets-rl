@@ -1,0 +1,35 @@
+{
+  "algorithms": [
+    {
+      "algorithm": "dqn",
+      "n_seeds": 5,
+      "final_mean": 138.01999999999998,
+      "final_seed_sd": 37.51648970786046,
+      "auc_mean": 188.71800000000002,
+      "auc_seed_sd": 16.059563194557942,
+      "final_noisy_mean": null,
+      "seconds_mean": 2.866609258198878
+    },
+    {
+      "algorithm": "noisy",
+      "n_seeds": 5,
+      "final_mean": 134.86999999999998,
+      "final_seed_sd": 24.734859005056002,
+      "auc_mean": 139.43,
+      "auc_seed_sd": 24.018633391598282,
+      "final_noisy_mean": 131.79000000000002,
+      "seconds_mean": 4.911420824800734
+    }
+  ],
+  "unit_of_replication": "independent training seed",
+  "difference_noisy_minus_dqn": {
+    "mean": -3.1500000000000057,
+    "bootstrap_percentile_95": [
+      -40.86,
+      29.620999999999917
+    ],
+    "resamples": 20000,
+    "paired": false,
+    "caveat": "Exploratory interval based on only five training runs per method"
+  }
+}

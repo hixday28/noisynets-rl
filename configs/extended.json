@@ -1,0 +1,22 @@
+{
+  "env": "Acrobot-v1",
+  "steps": 150000,
+  "hidden": 128,
+  "learning_rate": 0.0003,
+  "gamma": 0.99,
+  "batch_size": 64,
+  "replay_capacity": 100000,
+  "learning_starts": 2000,
+  "train_frequency": 4,
+  "target_interval": 1000,
+  "epsilon_start": 1.0,
+  "epsilon_end": 0.05,
+  "epsilon_decay_steps": 75000,
+  "sigma0": 0.5,
+  "eval_interval": 15000,
+  "eval_episodes": 10,
+  "final_episodes": 30,
+  "eval_seed": 10000,
+  "final_seed": 20000,
+  "gradient_clip": 10.0
+}
