@@ -105,3 +105,19 @@ def test_training_checkpoint_roundtrip(tmp_path):
     saved = json.loads((output / "final_returns.json").read_text())
     assert evaluate(model, c.env, c.final_episodes, c.final_seed) == saved["mean_weights"]
     assert config["seed"] == c.seed
+
+
+def test_paired_comparison_preserves_matched_initialisations():
+    import pandas as pd
+    from noisynets.analysis import summarise
+    rows = []
+    for seed in range(5):
+        for algorithm, offset in [("dqn", 0), ("noisy", 10)]:
+            rows.append({"seed": seed, "algorithm": algorithm,
+                         "final_mean": seed * 100 + offset, "auc_mean": seed * 100,
+                         "elapsed_seconds": 1, "noisy_policy_mean": np.nan})
+    result = summarise(pd.DataFrame(rows).sample(frac=1, random_state=9))
+    difference = result["difference_noisy_minus_dqn"]
+    assert difference["paired"]
+    assert difference["mean"] == 10
+    assert difference["bootstrap_percentile_95"] == [10, 10]

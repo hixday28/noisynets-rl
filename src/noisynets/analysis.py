@@ -57,16 +57,22 @@ def summarise(runs: pd.DataFrame):
                      "seconds_mean": float(data.elapsed_seconds.mean())})
     result = {"algorithms": rows, "unit_of_replication": "independent training seed"}
     if {"dqn", "noisy"}.issubset(set(runs.algorithm)):
-        a = runs.loc[runs.algorithm == "noisy", "final_mean"].to_numpy()
-        b = runs.loc[runs.algorithm == "dqn", "final_mean"].to_numpy()
+        a = runs.loc[runs.algorithm == "noisy"].set_index("seed").final_mean.sort_index()
+        b = runs.loc[runs.algorithm == "dqn"].set_index("seed").final_mean.sort_index()
         rng = np.random.default_rng(7241)
-        differences = (rng.choice(a, (20000, len(a)), replace=True).mean(axis=1)
-                       - rng.choice(b, (20000, len(b)), replace=True).mean(axis=1))
+        paired = a.index.is_unique and b.index.is_unique and a.index.equals(b.index)
+        if paired:
+            # При одинаковых seed сохраняем пары инициализаций при перевыборке.
+            delta = (a - b).to_numpy()
+            differences = rng.choice(delta, (20000, len(delta)), replace=True).mean(axis=1)
+        else:
+            differences = (rng.choice(a.to_numpy(), (20000, len(a)), replace=True).mean(axis=1)
+                           - rng.choice(b.to_numpy(), (20000, len(b)), replace=True).mean(axis=1))
         result["difference_noisy_minus_dqn"] = {
             "mean": float(a.mean() - b.mean()),
             "bootstrap_percentile_95": [float(v) for v in np.quantile(differences, [0.025, 0.975])],
-            "resamples": 20000, "paired": False,
-            "caveat": "Exploratory interval based on only five training runs per method"}
+            "resamples": 20000, "paired": paired,
+            "caveat": "Исследовательский интервал при малом числе запусков обучения"}
     return result
 
 
@@ -87,7 +93,7 @@ def make_figures(runs: pd.DataFrame, curves: pd.DataFrame, output: Path):
 
     fig, ax = plt.subplots(figsize=(7.1, 3.6))
     for alg, data in runs.groupby("algorithm", sort=True):
-        ax.plot(data.seed, data.final_mean, "o-", label=LABELS[alg], color=COLORS[alg], lw=1.5)
+        ax.plot(data.seed, data.final_mean, "o", label=LABELS[alg], color=COLORS[alg], ms=6)
     ax.set(xlabel="Seed обучения", ylabel="Награда на отложенных эпизодах", ylim=(0, 510),
            xticks=sorted(runs.seed.unique()))
     ax.grid(alpha=0.2); ax.legend(frameon=False)

@@ -25,11 +25,11 @@
   "difference_noisy_minus_dqn": {
     "mean": -3.1500000000000057,
     "bootstrap_percentile_95": [
-      -40.86,
-      29.620999999999917
+      -33.88999999999999,
+      18.800000000000004
     ],
     "resamples": 20000,
-    "paired": false,
-    "caveat": "Exploratory interval based on only five training runs per method"
+    "paired": true,
+    "caveat": "Исследовательский интервал при малом числе запусков обучения"
   }
 }
