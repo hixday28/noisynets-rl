@@ -76,5 +76,9 @@ class QNetwork(nn.Module):
                 layer.reset_noise()
 
     def sigma_stats(self) -> dict[str, float]:
-        return {f"sigma_abs_{name}": float(layer.weight_sigma.detach().abs().mean())
-                for name, layer in self.named_modules() if isinstance(layer, NoisyLinear)}
+        values = {}
+        for name, layer in self.named_modules():
+            if isinstance(layer, NoisyLinear):
+                values[f"sigma_abs_{name}"] = float(layer.weight_sigma.detach().abs().mean())
+                values[f"bias_sigma_abs_{name}"] = float(layer.bias_sigma.detach().abs().mean())
+        return values

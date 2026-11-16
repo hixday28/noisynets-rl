@@ -2,6 +2,7 @@
 
 import argparse
 import csv
+import hashlib
 import json
 import platform
 import subprocess
@@ -46,10 +47,13 @@ class Config:
     eval_seed: int = 10000
     final_seed: int = 20000
     gradient_clip: float = 10.0
+    noise_cadence: str = "action"
 
     def validate(self):
         if self.algorithm not in {"dqn", "noisy", "noisy-fixed"}:
             raise ValueError("Unknown algorithm")
+        if self.noise_cadence not in {"action", "update"}:
+            raise ValueError("noise_cadence must be action or update")
         for key in ["steps", "hidden", "batch_size", "replay_capacity", "train_frequency",
                     "target_interval", "epsilon_decay_steps", "eval_interval",
                     "eval_episodes", "final_episodes"]:
@@ -74,30 +78,38 @@ def td_target(rewards, terminated, next_values, gamma):
 
 
 @torch.no_grad()
-def evaluate(model: QNetwork, env_id: str, episodes: int, seed: int,
-             stochastic: bool = False) -> list[float]:
+def evaluate_details(model: QNetwork, env_id: str, episodes: int, seed: int,
+                     stochastic: bool = False) -> list[dict]:
     """Оценка копии модели без изменения весов, буферов шума и генератора PyTorch."""
     agent = deepcopy(model)
     agent.train(stochastic)
     env = gym.make(env_id)
-    returns = []
+    records = []
     try:
         with torch.random.fork_rng(devices=[]):
             torch.manual_seed(seed + 1000000)
             for ep in range(episodes):
                 obs, _ = env.reset(seed=seed + ep)
-                total, done = 0.0, False
+                total, done, length = 0.0, False, 0
                 while not done:
                     if stochastic:
                         agent.reset_noise()
                     action = int(agent(torch.as_tensor(obs).unsqueeze(0)).argmax(1).item())
                     obs, reward, terminated, truncated, _ = env.step(action)
                     total += reward
+                    length += 1
                     done = terminated or truncated
-                returns.append(float(total))
+                records.append({"seed": seed + ep, "return": float(total), "length": length,
+                                "terminated": bool(terminated), "truncated": bool(truncated)})
     finally:
         env.close()
-    return returns
+    return records
+
+
+def evaluate(model: QNetwork, env_id: str, episodes: int, seed: int,
+             stochastic: bool = False) -> list[float]:
+    """Награды оценочных эпизодов; подробные признаки доступны в evaluate_details."""
+    return [row["return"] for row in evaluate_details(model, env_id, episodes, seed, stochastic)]
 
 
 def write_csv(path: Path, rows: list[dict]):
@@ -143,6 +155,9 @@ def run(c: Config, out: Path):
                 "trainable_parameters": sum(p.numel() for p in online.parameters() if p.requires_grad),
                 "evaluation": "greedy mean weights; separate environment; fixed validation starts",
                 "final_evaluation": "held-out starts; mean weights and resampled noise for NoisyNet"}
+    metadata["training_source_sha256"] = {
+        name: hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest()
+        for name in ["train.py", "networks.py", "replay.py"]}
     (out / "metadata.json").write_text(json.dumps(metadata, indent=2) + "\n")
     history, episodes, updates = [], [], []
     episode_return, episode_length, episode_id, update_id = 0.0, 0, 0, 0
@@ -159,7 +174,7 @@ def run(c: Config, out: Path):
         checkpoint_eval(0)
         for step in range(1, c.steps + 1):
             online.train()
-            if noisy:
+            if noisy and (c.noise_cadence == "action" or step <= c.learning_starts):
                 online.reset_noise()
             if not noisy and rng.random() < epsilon_at(step - 1, c):
                 action = int(rng.integers(n_actions))
@@ -191,6 +206,9 @@ def run(c: Config, out: Path):
                 loss.backward()
                 grad = torch.nn.utils.clip_grad_norm_(online.parameters(), c.gradient_clip)
                 optimizer.step()
+                if noisy and c.noise_cadence == "update":
+                    # После обновления новый шум поведения фиксирован до следующего update.
+                    online.reset_noise()
                 update_id += 1
                 if update_id % 100 == 0:
                     updates.append({"step": step, "update": update_id, "loss": float(loss.detach()),
@@ -199,11 +217,14 @@ def run(c: Config, out: Path):
                 target.load_state_dict(online.state_dict())
             if step % c.eval_interval == 0 or step == c.steps:
                 checkpoint_eval(step)
-        final_scores = evaluate(online, c.env, c.final_episodes, c.final_seed)
+        final_details = {"mean_weights": evaluate_details(online, c.env, c.final_episodes, c.final_seed)}
+        final_scores = [row["return"] for row in final_details["mean_weights"]]
         final = {"mean_weights": final_scores}
         if noisy:
-            final["resampled_noise"] = evaluate(online, c.env, c.final_episodes, c.final_seed,
-                                                 stochastic=True)
+            final_details["resampled_noise"] = evaluate_details(
+                online, c.env, c.final_episodes, c.final_seed, stochastic=True)
+            final["resampled_noise"] = [row["return"] for row in final_details["resampled_noise"]]
+        (out / "final_episode_details.json").write_text(json.dumps(final_details, indent=2) + "\n")
         (out / "final_returns.json").write_text(json.dumps(final, indent=2) + "\n")
         write_csv(out / "episodes.csv", episodes)
         write_csv(out / "updates.csv", updates)
