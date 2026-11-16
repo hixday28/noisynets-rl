@@ -1,0 +1,426 @@
+{
+  "mean_weights": [
+    {
+      "seed": 40000,
+      "return": -83.0,
+      "length": 84,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40001,
+      "return": -126.0,
+      "length": 127,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40002,
+      "return": -121.0,
+      "length": 122,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40003,
+      "return": -100.0,
+      "length": 101,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40004,
+      "return": -92.0,
+      "length": 93,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40005,
+      "return": -83.0,
+      "length": 84,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40006,
+      "return": -101.0,
+      "length": 102,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40007,
+      "return": -93.0,
+      "length": 94,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40008,
+      "return": -89.0,
+      "length": 90,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40009,
+      "return": -87.0,
+      "length": 88,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40010,
+      "return": -90.0,
+      "length": 91,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40011,
+      "return": -69.0,
+      "length": 70,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40012,
+      "return": -84.0,
+      "length": 85,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40013,
+      "return": -118.0,
+      "length": 119,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40014,
+      "return": -107.0,
+      "length": 108,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40015,
+      "return": -112.0,
+      "length": 113,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40016,
+      "return": -190.0,
+      "length": 191,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40017,
+      "return": -141.0,
+      "length": 142,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40018,
+      "return": -78.0,
+      "length": 79,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40019,
+      "return": -128.0,
+      "length": 129,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40020,
+      "return": -78.0,
+      "length": 79,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40021,
+      "return": -69.0,
+      "length": 70,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40022,
+      "return": -90.0,
+      "length": 91,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40023,
+      "return": -129.0,
+      "length": 130,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40024,
+      "return": -92.0,
+      "length": 93,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40025,
+      "return": -86.0,
+      "length": 87,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40026,
+      "return": -92.0,
+      "length": 93,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40027,
+      "return": -80.0,
+      "length": 81,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40028,
+      "return": -98.0,
+      "length": 99,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40029,
+      "return": -137.0,
+      "length": 138,
+      "terminated": true,
+      "truncated": false
+    }
+  ],
+  "resampled_noise": [
+    {
+      "seed": 40000,
+      "return": -134.0,
+      "length": 135,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40001,
+      "return": -120.0,
+      "length": 121,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40002,
+      "return": -124.0,
+      "length": 125,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40003,
+      "return": -152.0,
+      "length": 153,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40004,
+      "return": -119.0,
+      "length": 120,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40005,
+      "return": -132.0,
+      "length": 133,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40006,
+      "return": -162.0,
+      "length": 163,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40007,
+      "return": -148.0,
+      "length": 149,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40008,
+      "return": -108.0,
+      "length": 109,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40009,
+      "return": -194.0,
+      "length": 195,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40010,
+      "return": -170.0,
+      "length": 171,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40011,
+      "return": -110.0,
+      "length": 111,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40012,
+      "return": -191.0,
+      "length": 192,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40013,
+      "return": -202.0,
+      "length": 203,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40014,
+      "return": -133.0,
+      "length": 134,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40015,
+      "return": -110.0,
+      "length": 111,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40016,
+      "return": -184.0,
+      "length": 185,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40017,
+      "return": -191.0,
+      "length": 192,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40018,
+      "return": -84.0,
+      "length": 85,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40019,
+      "return": -178.0,
+      "length": 179,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40020,
+      "return": -369.0,
+      "length": 370,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40021,
+      "return": -143.0,
+      "length": 144,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40022,
+      "return": -127.0,
+      "length": 128,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40023,
+      "return": -112.0,
+      "length": 113,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40024,
+      "return": -142.0,
+      "length": 143,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40025,
+      "return": -137.0,
+      "length": 138,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40026,
+      "return": -119.0,
+      "length": 120,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40027,
+      "return": -136.0,
+      "length": 137,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40028,
+      "return": -104.0,
+      "length": 105,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 40029,
+      "return": -154.0,
+      "length": 155,
+      "terminated": true,
+      "truncated": false
+    }
+  ]
+}
