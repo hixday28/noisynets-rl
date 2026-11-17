@@ -1,0 +1,172 @@
+{
+  "version": 1,
+  "seeds": [
+    200,
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209
+  ],
+  "primary_evaluation": "behaviour",
+  "bootstrap_seed": 7241,
+  "bootstrap_resamples": 20000,
+  "environments": [
+    {
+      "key": "cartpole",
+      "config": {
+        "env": "CartPole-v1",
+        "steps": 100000,
+        "hidden": 64,
+        "learning_rate": 0.0003,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "sigma0": 0.1,
+        "generation": "factorized",
+        "workers": 4,
+        "a3c_rollout": 20,
+        "ppo_rollout": 128,
+        "ppo_epochs": 4,
+        "minibatch": 64,
+        "clip": 0.2,
+        "entropy_coef": 0.01,
+        "value_coef": 0.5,
+        "gradient_clip": 0.5,
+        "eval_interval": 10000,
+        "eval_episodes": 10,
+        "final_episodes": 30,
+        "eval_seed": 55000,
+        "final_seed": 65000
+      },
+      "conditions": [
+        {
+          "key": "a3c",
+          "algorithm": "a3c",
+          "learning_rate": 0.0001,
+          "entropy_coef": 0.01,
+          "generation": "independent"
+        },
+        {
+          "key": "noisy_a3c_independent",
+          "algorithm": "noisy-a3c",
+          "learning_rate": 0.0001,
+          "entropy_coef": 0.0,
+          "generation": "independent"
+        },
+        {
+          "key": "noisy_a3c_factorized",
+          "algorithm": "noisy-a3c",
+          "learning_rate": 0.0001,
+          "entropy_coef": 0.0,
+          "generation": "factorized"
+        },
+        {
+          "key": "ppo",
+          "algorithm": "ppo",
+          "learning_rate": 0.0003,
+          "entropy_coef": 0.01,
+          "generation": "factorized"
+        },
+        {
+          "key": "noisy_ppo_factorized",
+          "algorithm": "noisy-ppo",
+          "learning_rate": 0.0003,
+          "entropy_coef": 0.0,
+          "generation": "factorized"
+        },
+        {
+          "key": "noisy_ppo_independent",
+          "algorithm": "noisy-ppo",
+          "learning_rate": 0.0003,
+          "entropy_coef": 0.0,
+          "generation": "independent"
+        }
+      ]
+    },
+    {
+      "key": "acrobot",
+      "config": {
+        "env": "Acrobot-v1",
+        "steps": 150000,
+        "hidden": 128,
+        "learning_rate": 0.0003,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "sigma0": 0.1,
+        "generation": "factorized",
+        "workers": 4,
+        "a3c_rollout": 20,
+        "ppo_rollout": 128,
+        "ppo_epochs": 4,
+        "minibatch": 64,
+        "clip": 0.2,
+        "entropy_coef": 0.01,
+        "value_coef": 0.5,
+        "gradient_clip": 0.5,
+        "eval_interval": 15000,
+        "eval_episodes": 10,
+        "final_episodes": 30,
+        "eval_seed": 55000,
+        "final_seed": 65000
+      },
+      "conditions": [
+        {
+          "key": "a3c",
+          "algorithm": "a3c",
+          "learning_rate": 0.0001,
+          "entropy_coef": 0.01,
+          "generation": "independent"
+        },
+        {
+          "key": "noisy_a3c_independent",
+          "algorithm": "noisy-a3c",
+          "learning_rate": 0.0001,
+          "entropy_coef": 0.0,
+          "generation": "independent"
+        },
+        {
+          "key": "noisy_a3c_factorized",
+          "algorithm": "noisy-a3c",
+          "learning_rate": 0.0001,
+          "entropy_coef": 0.0,
+          "generation": "factorized"
+        },
+        {
+          "key": "ppo",
+          "algorithm": "ppo",
+          "learning_rate": 0.0003,
+          "entropy_coef": 0.01,
+          "generation": "factorized"
+        },
+        {
+          "key": "noisy_ppo_factorized",
+          "algorithm": "noisy-ppo",
+          "learning_rate": 0.0003,
+          "entropy_coef": 0.0,
+          "generation": "factorized"
+        },
+        {
+          "key": "noisy_ppo_independent",
+          "algorithm": "noisy-ppo",
+          "learning_rate": 0.0003,
+          "entropy_coef": 0.0,
+          "generation": "independent"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Протокол зафиксирован до запусков дополнительной серии 17.11.2026.",
+    "A3C: четыре асинхронных actor-learner, атомарный Adam; барьер только на контрольных оценках. Порядок потоков не детерминирован.",
+    "Noisy-A3C: одна реализация epsilon на rollout; entropy bonus выключен; действия выбираются из categorical.",
+    "Noisy-PPO: epsilon фиксирован от сбора rollout до конца всех эпох; вероятности условны на том же epsilon.",
+    "Основная оценка соответствует поведению: sampling действий; для noisy noise обновляется каждые 20/128 шагов соответствующего алгоритма.",
+    "Noisy-PPO — явно описанная интеграция для курсовой, а не алгоритм из оригинальной статьи NoisyNets.",
+    "Время достижения порога считается по валидации: CartPole >=475, Acrobot >=-100; недостижение учитывается как цензурированное наблюдение.",
+    "Старые 80 запусков DQN хранятся отдельно; новые условия не подбираются по их отложенным эпизодам."
+  ]
+}
