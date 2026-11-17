@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "noisynets-mgmo"
 version = "0.1.0"
-description = "Исследование DQN и NoisyNet-DQN в курсовой работе по МГМО"
+description = "Исследование NoisyNets в DQN, A3C и PPO в курсовой работе по МГМО"
 requires-python = ">=3.11"
 dependencies = ["torch>=2.5,<3", "gymnasium>=1.1,<2", "numpy>=2,<3", "pandas>=2.2,<4", "matplotlib>=3.9,<4"]
 

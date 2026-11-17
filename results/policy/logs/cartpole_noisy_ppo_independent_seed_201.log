@@ -1,0 +1,11 @@
+noisy-ppo independent seed=201 step=0: 23.20
+noisy-ppo independent seed=201 step=10000: 29.30
+noisy-ppo independent seed=201 step=20000: 82.30
+noisy-ppo independent seed=201 step=30000: 87.30
+noisy-ppo independent seed=201 step=40000: 58.40
+noisy-ppo independent seed=201 step=50000: 82.10
+noisy-ppo independent seed=201 step=60000: 85.40
+noisy-ppo independent seed=201 step=70000: 118.90
+noisy-ppo independent seed=201 step=80000: 177.40
+noisy-ppo independent seed=201 step=90000: 70.80
+noisy-ppo independent seed=201 step=100000: 174.10

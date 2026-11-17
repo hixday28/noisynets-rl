@@ -4,11 +4,40 @@
 
 Тема: «Применение нейронных сетей с параметрическим шумом (NoisyNets) в задачах обучения с подкреплением».
 
-[Итоговая РПЗ](reports/РПЗ_Горбунов_МГМО_NoisyNets_итоговая.docx) · [Выполненный ноутбук](notebooks/02_final_study.ipynb) · [Протокол](configs/final_study.json)
+[Итоговая РПЗ](reports/РПЗ_Горбунов_МГМО_NoisyNets_итоговая.docx) · [Все модели задания](notebooks/03_all_models.ipynb) · [Подробности DQN](notebooks/02_final_study.ipynb) · [Протокол DQN](configs/final_study.json) · [Протокол A3C/PPO](configs/policy_study.json)
 
-Реализованы DQN с ε-жадной стратегией и NoisyNet-DQN с факторизованным шумом. Основная серия содержит 80 обучений на CartPole-v1 и Acrobot-v1: по десять seed на каждое условие, всего 11 000 000 переходов обучения. В репозитории сохранены конфигурации, исходные журналы, веса последних моделей и результаты оценки.
+Реализованы и объяснены DQN, A3C, PPO и их шумовые варианты. Проверены независимый и факторизованный Gaussian-шум, динамика σ, качество, скорость достижения порога и стабильность. Вместе выполнены **200 обучений и 26 млн переходов** без пилота: 80 запусков DQN и 120 запусков A3C/PPO. Сохранены все модели и исходные журналы.
 
-## Результаты
+[Соответствие индивидуальному заданию](REQUIREMENTS.md)
+
+## A3C и PPO
+
+A3C использует четыре конкурентных actor-learner с собственными средами и локальными сетями. Градиенты применяются асинхронно; атомарны копирование параметров и Adam. Барьер между всеми потоками используется только на контрольных оценках. Это A3C, а не синхронный A2C. В журналах сохранено запаздывание градиентов. Порядок потоков ограничивает побитовую повторяемость обучения.
+
+Noisy-A3C сохраняет ε на один rollout. Noisy-PPO сохраняет одну реализацию ε от сбора rollout до конца всех эпох: отношение вероятностей условно на том же ε. Перед оптимизацией проверяется log-ratio≈0. В обоих шумовых actor-critic удалён entropy bonus, sampling действий сохранён. Noisy-PPO — явно описанная интеграция для курсовой, не алгоритм из оригинальной статьи NoisyNets.
+
+Новая серия: по десять seed 200–209; CartPole — 100 000, Acrobot — 150 000 шагов; четыре среды; n-step до 20 у A3C, rollout до 128 и четыре эпохи у PPO; σ₀ = 0,1. Оба генератора проверены внутри каждого семейства. Валидация использует seed 55 000–55 009, отложенные старты — 65 000–65 029. Первичный режим — стохастическое поведение с шумом у NoisyNet; mean-greedy и mean-sampled показываются отдельно.
+
+| Среда | Модель | Возврат поведения, среднее ± SD | AUC |
+|---|---|---:|---:|
+| acrobot | A3C | −498,69 ± 1,70 | −494,14 |
+| acrobot | Noisy-A3C факторизованный | −496,72 ± 3,96 | −497,29 |
+| acrobot | Noisy-A3C независимый | −495,80 ± 6,22 | −495,41 |
+| acrobot | Noisy-PPO факторизованный | −378,04 ± 196,38 | −440,25 |
+| acrobot | Noisy-PPO независимый | −459,17 ± 129,12 | −478,30 |
+| acrobot | PPO | −168,60 ± 154,88 | −368,23 |
+| cartpole | A3C | 49,61 ± 8,54 | 34,66 |
+| cartpole | Noisy-A3C факторизованный | 49,17 ± 4,11 | 38,25 |
+| cartpole | Noisy-A3C независимый | 48,10 ± 6,94 | 38,36 |
+| cartpole | Noisy-PPO факторизованный | 107,98 ± 46,48 | 90,42 |
+| cartpole | Noisy-PPO независимый | 140,39 ± 43,73 | 85,68 |
+| cartpole | PPO | 146,07 ± 32,56 | 91,29 |
+
+Показатели рассчитаны по десяти средним моделей, каждая оценена на 30 эпизодах. Все описательные парные интервалы, сравнения генераторов и режимов доступны в [сводке](results/policy_analysis/summary.json). Поправка на множественные сравнения не применяется. Модели не отбирались по награде.
+
+Скорость описывается AUC и первым достижением заранее заданного валидационного порога: 475 на CartPole, −100 на Acrobot. Недостижение учитывается как цензурирование; медиана среди достигших показывается вместе с их числом. SD между seed и колебания последних пяти оценок характеризуют разные стороны стабильности. Достижение порога не является доказательством сходимости.
+
+## Результаты DQN
 
 Основные показатели рассчитаны из всех 80 завершённых запусков. В таблице приведены среднее ± выборочное SD по десяти seed обучения. Каждое наблюдение — средний возврат одной модели на 30 отложенных эпизодах.
 
@@ -47,7 +76,7 @@
 
 Разности сопоставляются попарно по seed с общей начальной инициализацией μ. Используются 20 000 bootstrap-перевыборок пар и процентильные 95%-е интервалы. Все интервалы описательные, без поправки на множественные сравнения. Интервал, содержащий ноль, не доказывает равенства методов.
 
-## Протокол
+## Протокол DQN
 
 | Параметр | CartPole-v1 | Acrobot-v1 |
 |---|---:|---:|
@@ -87,21 +116,24 @@ python -m pytest -q
 
 ```bash
 python -m noisynets.final_analysis --results results/final --out results/final_analysis --manifest configs/final_study.json
+python -m noisynets.policy_analysis
 ```
 
-Выполнить итоговый ноутбук; он также повторно оценивает сохранённые чекпойнты и сравнивает результаты с журналами. В проверенном окружении все 4200 итоговых эпизодов 80 моделей воспроизвели сохранённые награды:
+Выполнить итоговый ноутбук; он также повторно оценивает сохранённые чекпойнты и сравнивает результаты с журналами. Новый ноутбук повторно проверяет 120 моделей и 9600 эпизодов; предыдущий — 80 моделей DQN и 4200 эпизодов. Все награды, длины и признаки завершения совпали:
 
 ```bash
-python scripts/execute_notebook.py notebooks/02_final_study.ipynb
+python scripts/execute_notebook.py notebooks/03_all_models.ipynb
 ```
 
-Для интерактивного открытия подходит VS Code или отдельно установленный JupyterLab. Повторная оценка моделей и повторное обучение — разные проверки: выполнение ноутбука не обучает заново все 80 моделей.
+Для интерактивного открытия подходит VS Code или отдельно установленный JupyterLab. Повторная оценка моделей и повторное обучение — разные проверки: выполнение ноутбука не обучает заново все модели.
 
 Запустить всю серию заново в отдельном каталоге и обработать новые результаты:
 
 ```bash
 python scripts/run_final_study.py --workers 4 --out results/reproduced-final
+python scripts/run_policy_study.py --workers 2 --out results/reproduced-policy
 python -m noisynets.final_analysis --results results/reproduced-final --out results/reproduced-final-analysis --manifest configs/final_study.json
+python -m noisynets.policy_analysis --results results/reproduced-policy --out results/reproduced-policy-analysis
 ```
 
 Проверить отдельную опубликованную модель на других начальных состояниях:
@@ -109,6 +141,7 @@ python -m noisynets.final_analysis --results results/reproduced-final --out resu
 ```bash
 python -m noisynets.evaluate results/final/acrobot/noisy/seed_100/model.pt --episodes 30 --seed 50000
 python -m noisynets.evaluate results/final/acrobot/noisy/seed_100/model.pt --episodes 30 --seed 50000 --noise
+python -m noisynets.evaluate_policy results/policy/acrobot/noisy_ppo_factorized/seed_200/model.pt --mode behaviour --episodes 30 --seed 75000
 ```
 
 Готовые запуски пропускаются при совпадении настроек; незавершённые каталоги не перезаписываются. Для новой серии нужен новый `--out`. Чекпойнты сохраняют модель и конфигурацию, но не оптимизатор и replay: они предназначены для оценки, а не продолжения прерванного обучения.
@@ -119,7 +152,11 @@ python -m noisynets.evaluate results/final/acrobot/noisy/seed_100/model.pt --epi
 src/noisynets/                  слои, replay, обучение, оценка, анализ
 configs/final_study.json        протокол основной серии и абляций
 scripts/run_final_study.py      запуск всех 80 обучений
-notebooks/02_final_study.ipynb   выполненный итоговый ноутбук
+notebooks/03_all_models.ipynb    все модели индивидуального задания
+notebooks/02_final_study.ipynb   подробная серия DQN
+configs/policy_study.json       120 запусков A3C/PPO
+results/policy/                модели и журналы A3C/PPO
+results/policy_analysis/       сводка, сравнения и графики A3C/PPO
 reports/                       итоговая и промежуточная РПЗ
 results/final/                 конфигурации, журналы и модели 80 запусков
 results/final_analysis/         сводная статистика, таблицы и графики
@@ -152,3 +189,7 @@ python scripts/build_final_report.py
 5. Agarwal R. et al. [Deep Reinforcement Learning at the Edge of the Statistical Precipice](https://arxiv.org/abs/2108.13264), NeurIPS 2021.
 6. Farama Foundation. [CartPole](https://gymnasium.farama.org/environments/classic_control/cart_pole/), [Acrobot](https://gymnasium.farama.org/environments/classic_control/acrobot/), [terminated и truncated](https://farama.org/Gymnasium-Terminated-Truncated-Step-API).
 7. PyTorch. [Реализация NoisyLinear в TorchRL](https://docs.pytorch.org/rl/stable/_modules/torchrl/modules/models/exploration.html).
+
+8. Mnih et al. [Asynchronous Methods for Deep Reinforcement Learning](https://arxiv.org/abs/1602.01783), ICML 2016.
+9. Schulman et al. [Proximal Policy Optimization Algorithms](https://arxiv.org/abs/1707.06347), 2017.
+10. Schulman et al. [Generalized Advantage Estimation](https://arxiv.org/abs/1506.02438), ICLR 2016.

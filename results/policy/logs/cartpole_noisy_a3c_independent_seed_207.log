@@ -1,0 +1,11 @@
+noisy-a3c independent seed=207 step=0: 22.00
+noisy-a3c independent seed=207 step=10000: 25.70
+noisy-a3c independent seed=207 step=20000: 23.00
+noisy-a3c independent seed=207 step=30000: 28.40
+noisy-a3c independent seed=207 step=40000: 34.30
+noisy-a3c independent seed=207 step=50000: 52.40
+noisy-a3c independent seed=207 step=60000: 35.80
+noisy-a3c independent seed=207 step=70000: 46.30
+noisy-a3c independent seed=207 step=80000: 32.10
+noisy-a3c independent seed=207 step=90000: 38.90
+noisy-a3c independent seed=207 step=100000: 26.80

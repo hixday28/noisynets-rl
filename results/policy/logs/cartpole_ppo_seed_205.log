@@ -1,0 +1,11 @@
+ppo factorized seed=205 step=0: 23.30
+ppo factorized seed=205 step=10000: 37.80
+ppo factorized seed=205 step=20000: 66.90
+ppo factorized seed=205 step=30000: 78.20
+ppo factorized seed=205 step=40000: 116.80
+ppo factorized seed=205 step=50000: 110.00
+ppo factorized seed=205 step=60000: 71.40
+ppo factorized seed=205 step=70000: 157.10
+ppo factorized seed=205 step=80000: 107.60
+ppo factorized seed=205 step=90000: 128.80
+ppo factorized seed=205 step=100000: 123.60

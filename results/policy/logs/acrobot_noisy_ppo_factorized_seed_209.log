@@ -1,0 +1,11 @@
+noisy-ppo factorized seed=209 step=0: -500.00
+noisy-ppo factorized seed=209 step=15000: -498.20
+noisy-ppo factorized seed=209 step=30000: -482.20
+noisy-ppo factorized seed=209 step=45000: -500.00
+noisy-ppo factorized seed=209 step=60000: -454.60
+noisy-ppo factorized seed=209 step=75000: -330.90
+noisy-ppo factorized seed=209 step=90000: -112.80
+noisy-ppo factorized seed=209 step=105000: -98.50
+noisy-ppo factorized seed=209 step=120000: -98.60
+noisy-ppo factorized seed=209 step=135000: -84.00
+noisy-ppo factorized seed=209 step=150000: -111.50

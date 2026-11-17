@@ -1,0 +1,11 @@
+noisy-ppo factorized seed=207 step=0: 21.90
+noisy-ppo factorized seed=207 step=10000: 32.10
+noisy-ppo factorized seed=207 step=20000: 43.30
+noisy-ppo factorized seed=207 step=30000: 47.40
+noisy-ppo factorized seed=207 step=40000: 70.60
+noisy-ppo factorized seed=207 step=50000: 80.20
+noisy-ppo factorized seed=207 step=60000: 142.20
+noisy-ppo factorized seed=207 step=70000: 100.60
+noisy-ppo factorized seed=207 step=80000: 86.00
+noisy-ppo factorized seed=207 step=90000: 132.80
+noisy-ppo factorized seed=207 step=100000: 77.10

@@ -1,0 +1,11 @@
+noisy-a3c factorized seed=204 step=0: -471.20
+noisy-a3c factorized seed=204 step=15000: -484.80
+noisy-a3c factorized seed=204 step=30000: -500.00
+noisy-a3c factorized seed=204 step=45000: -499.70
+noisy-a3c factorized seed=204 step=60000: -500.00
+noisy-a3c factorized seed=204 step=75000: -500.00
+noisy-a3c factorized seed=204 step=90000: -482.80
+noisy-a3c factorized seed=204 step=105000: -486.70
+noisy-a3c factorized seed=204 step=120000: -499.30
+noisy-a3c factorized seed=204 step=135000: -500.00
+noisy-a3c factorized seed=204 step=150000: -500.00
