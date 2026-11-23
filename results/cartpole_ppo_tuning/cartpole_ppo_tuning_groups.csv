@@ -1,0 +1,13 @@
+candidate,condition,count,mean,std,min,max
+fast_rollout256,noisy_ppo_factorized,2,361.4,91.07535341682734,297.0,425.8
+fast_rollout256,noisy_ppo_independent,2,379.9,79.6202235616052,323.6,436.2
+fast_rollout256,ppo,2,500.0,0.0,500.0,500.0
+long_epochs10,noisy_ppo_factorized,2,345.15,84.64068170802975,285.3,405.0
+long_epochs10,noisy_ppo_independent,2,392.29999999999995,24.890158697766484,374.7,409.9
+long_epochs10,ppo,2,481.7,25.880108191427656,463.4,500.0
+separate_annealed,noisy_ppo_factorized,2,459.15,57.77062402294094,418.3,500.0
+separate_annealed,noisy_ppo_independent,2,500.0,0.0,500.0,500.0
+separate_annealed,ppo,2,500.0,0.0,500.0,500.0
+separate_fast_smallnoise,noisy_ppo_factorized,4,500.0,0.0,500.0,500.0
+separate_fast_smallnoise,noisy_ppo_independent,4,500.0,0.0,500.0,500.0
+separate_fast_smallnoise,ppo,4,500.0,0.0,500.0,500.0

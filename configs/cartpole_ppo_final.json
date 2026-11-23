@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "stage": "final",
+  "frozen_before_final_utc": "2026-11-23T07:12:35.123766+00:00",
+  "selected_candidate": "separate_fast_smallnoise",
+  "trainer_module": "noisynets.cartpole_ppo",
+  "results_root": "results/cartpole_ppo_final",
+  "seeds": [
+    400,
+    401,
+    402,
+    403,
+    404,
+    405,
+    406,
+    407,
+    408,
+    409
+  ],
+  "config": {
+    "env": "CartPole-v1",
+    "algorithm": "ppo",
+    "steps": 300000,
+    "hidden": 64,
+    "learning_rate": 0.001,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "sigma0": 0.01,
+    "generation": "factorized",
+    "workers": 4,
+    "a3c_rollout": 20,
+    "ppo_rollout": 256,
+    "ppo_epochs": 10,
+    "minibatch": 128,
+    "clip": 0.2,
+    "entropy_coef": 0.0,
+    "value_coef": 0.5,
+    "gradient_clip": 0.5,
+    "eval_interval": 50000,
+    "eval_episodes": 10,
+    "final_episodes": 30,
+    "eval_seed": 75000,
+    "final_seed": 85000,
+    "architecture": "separate_orthogonal",
+    "anneal_learning_rate": true,
+    "adam_epsilon": 1e-05
+  },
+  "conditions": [
+    {
+      "key": "ppo",
+      "algorithm": "ppo",
+      "generation": "factorized"
+    },
+    {
+      "key": "noisy_ppo_factorized",
+      "algorithm": "noisy-ppo",
+      "generation": "factorized"
+    },
+    {
+      "key": "noisy_ppo_independent",
+      "algorithm": "noisy-ppo",
+      "generation": "independent"
+    }
+  ],
+  "tuning_manifest": "configs/cartpole_ppo_tuning.json",
+  "confirmation_manifest": "configs/cartpole_ppo_confirmation.json",
+  "tuning_seeds": [
+    300,
+    301
+  ],
+  "confirmation_seeds": [
+    302,
+    303
+  ],
+  "selection": "Максимум минимальной средней награды стохастической политики по трём условиям. Выбранный кандидат получил 500 во всех 12 обучениях с seed 300–303. Итоговые старты 85000–85029 и seed обучения 400–409 не использовались.",
+  "training_source_sha256": {
+    "cartpole_ppo.py": "884d110803b27dda6fe988a98d5910400598559dd0e2960ef4f5302016d2d3ec",
+    "actorcritic.py": "ee8204ba5e2c917a3bfba62c714019d0ab380bbec939d93c325a4cd692be1344",
+    "policy_networks.py": "c811d78eb99ecbafe89eea266c15f05b4a0a0c1a288e5bae873bad26eaa83cfc",
+    "networks.py": "e1a6db618df465f516007374f5f838f1918a9ad4c1a3e71ad230d551a7603c6d",
+    "train.py": "c310dbc94a3567fe303e60ecb07f48b6c3762d39ef2c8f9349afa3b7f8a35d63"
+  },
+  "sources": [
+    "https://arxiv.org/abs/1707.06347",
+    "https://github.com/vwxyzjn/cleanrl/blob/master/cleanrl/ppo.py"
+  ],
+  "notes": [
+    "Раздельные сети политики и ценности, ортогональная инициализация средних весов, Adam eps=1e-5 и линейный спад learning rate по шагам оптимизатора. Это совместная стабилизация; вклад отдельных изменений не установлен.",
+    "В Noisy-PPO одна реализация шума сохраняется от сбора rollout до завершения всех эпох PPO. Старые и новые вероятности действий вычисляются при том же шуме.",
+    "Основная оценка behaviour использует выборку действий из категориального распределения; шум Noisy-PPO обновляется каждые 256 шагов. Режимы mean_greedy и mean_sampled сохраняются отдельно.",
+    "Используется последний checkpoint при 300 000 шагах, без отбора по итоговым эпизодам. Сохраняются все 30 итоговых обучений.",
+    "Исходная серия в results/policy не изменяется. Все 30 обучений настройки хранятся отдельно и не включаются в итоговую статистику."
+  ]
+}

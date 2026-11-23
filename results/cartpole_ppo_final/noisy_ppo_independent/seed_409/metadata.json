@@ -1,0 +1,31 @@
+{
+  "git_commit": "2139e532e30d48eaecf6c84213623ca241a7cadf",
+  "seed": 409,
+  "device": "cpu",
+  "torch_threads": 1,
+  "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+  "versions": {
+    "torch": "2.15.0",
+    "gymnasium": "1.4.0",
+    "numpy": "2.5.4"
+  },
+  "started_utc": "2026-11-23T07:25:47.897042+00:00",
+  "architecture": "separate_orthogonal",
+  "trainable_parameters": 17670,
+  "training_source_sha256": {
+    "cartpole_ppo.py": "884d110803b27dda6fe988a98d5910400598559dd0e2960ef4f5302016d2d3ec",
+    "actorcritic.py": "ee8204ba5e2c917a3bfba62c714019d0ab380bbec939d93c325a4cd692be1344",
+    "policy_networks.py": "c811d78eb99ecbafe89eea266c15f05b4a0a0c1a288e5bae873bad26eaa83cfc",
+    "networks.py": "e1a6db618df465f516007374f5f838f1918a9ad4c1a3e71ad230d551a7603c6d",
+    "train.py": "c310dbc94a3567fe303e60ecb07f48b6c3762d39ef2c8f9349afa3b7f8a35d63"
+  },
+  "primary_evaluation": "behaviour: categorical sampling; rollout noise cadence",
+  "checkpoint_selection": "last checkpoint at a fixed training budget",
+  "optimizer": "Adam; linear learning-rate annealing by gradient update",
+  "gradient_updates": 23460,
+  "rollouts": 294,
+  "max_initial_logratio_error": 9.5367431640625e-07,
+  "noise_reused_during_all_ppo_epochs": true,
+  "elapsed_seconds": 76.39220824999938,
+  "completed_utc": "2026-11-23T07:27:04.290074+00:00"
+}

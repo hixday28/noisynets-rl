@@ -1,0 +1,22 @@
+{
+  "started_utc": "2026-11-23T07:56:27.997830+00:00",
+  "families": [
+    "a3c"
+  ],
+  "expected_models": 30,
+  "completed_models": 30,
+  "pending": [],
+  "workers": 2,
+  "torch_threads_per_process": 1,
+  "evaluation_seed_start": 85000,
+  "episodes_per_mode": 30,
+  "exact_episode_details": true,
+  "completed_utc": "2026-11-23T07:56:47.558832+00:00",
+  "verification_started": true,
+  "verified_models": 30,
+  "verified_model_modes": 90,
+  "verified_episodes": 2700,
+  "failed_models": 0,
+  "failures": [],
+  "all_verified": true
+}

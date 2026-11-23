@@ -1,0 +1,96 @@
+{
+  "version": 2,
+  "stage": "tuning",
+  "training_seeds": [
+    300,
+    301
+  ],
+  "validation_seed": 75000,
+  "final_seed_reserved": 85000,
+  "selection": "Средняя награда stochastic behaviour на validation-стартах; дополнительно минимум по трём условиям и двум seed. Только последний checkpoint при фиксированном бюджете.",
+  "conditions": [
+    {
+      "key": "ppo",
+      "algorithm": "ppo",
+      "generation": "factorized"
+    },
+    {
+      "key": "noisy_ppo_factorized",
+      "algorithm": "noisy-ppo",
+      "generation": "factorized"
+    },
+    {
+      "key": "noisy_ppo_independent",
+      "algorithm": "noisy-ppo",
+      "generation": "independent"
+    }
+  ],
+  "candidates": [
+    {
+      "key": "long_epochs10",
+      "steps": 300000,
+      "learning_rate": 0.0003,
+      "ppo_rollout": 128,
+      "ppo_epochs": 10,
+      "minibatch": 64,
+      "sigma0": 0.1
+    },
+    {
+      "key": "fast_rollout256",
+      "steps": 300000,
+      "learning_rate": 0.001,
+      "ppo_rollout": 256,
+      "ppo_epochs": 10,
+      "minibatch": 128,
+      "sigma0": 0.05
+    },
+    {
+      "key": "separate_annealed",
+      "trainer": "noisynets.cartpole_ppo",
+      "architecture": "separate_orthogonal",
+      "steps": 300000,
+      "learning_rate": 0.0003,
+      "ppo_rollout": 128,
+      "ppo_epochs": 4,
+      "minibatch": 64,
+      "sigma0": 0.05,
+      "anneal_learning_rate": true,
+      "adam_epsilon": 1e-05
+    },
+    {
+      "key": "separate_fast_smallnoise",
+      "trainer": "noisynets.cartpole_ppo",
+      "architecture": "separate_orthogonal",
+      "steps": 300000,
+      "learning_rate": 0.001,
+      "ppo_rollout": 256,
+      "ppo_epochs": 10,
+      "minibatch": 128,
+      "sigma0": 0.01,
+      "anneal_learning_rate": true,
+      "adam_epsilon": 1e-05
+    }
+  ],
+  "common": {
+    "env": "CartPole-v1",
+    "hidden": 64,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "workers": 4,
+    "entropy_coef": 0.0,
+    "value_coef": 0.5,
+    "gradient_clip": 0.5,
+    "clip": 0.2,
+    "eval_interval": 50000,
+    "eval_episodes": 10,
+    "final_episodes": 10,
+    "eval_seed": 75000,
+    "final_seed": 75000
+  },
+  "notes": [
+    "Первые кандидаты используют неизменённый существующий trainer actorcritic.py.",
+    "Итоговые train seeds400–409 и env starts85000–85029 не используются для настройки.",
+    "Все неудачные и удачные tuning-запуски сохраняются отдельно от старой серии.",
+    "После первых legacy-кандидатов добавлены раздельные actor/critic с orthogonal init, Adam eps1e-5 и annealing. Цель устранить конкуренцию actor/critic за общий trunk; итоговые85000+ по-прежнему не использованы."
+  ]
+}

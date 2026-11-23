@@ -1,0 +1,4 @@
+{
+  "anneal_lr": false,
+  "schedule": "constant"
+}

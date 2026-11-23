@@ -1,0 +1,218 @@
+{
+  "behaviour": [
+    {
+      "seed": 75000,
+      "return": 444.0,
+      "length": 444,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 75001,
+      "return": 447.0,
+      "length": 447,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 75002,
+      "return": 500.0,
+      "length": 500,
+      "terminated": false,
+      "truncated": true
+    },
+    {
+      "seed": 75003,
+      "return": 148.0,
+      "length": 148,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 75004,
+      "return": 360.0,
+      "length": 360,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 75005,
+      "return": 500.0,
+      "length": 500,
+      "terminated": false,
+      "truncated": true
+    },
+    {
+      "seed": 75006,
+      "return": 183.0,
+      "length": 183,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 75007,
+      "return": 500.0,
+      "length": 500,
+      "terminated": false,
+      "truncated": true
+    },
+    {
+      "seed": 75008,
+      "return": 346.0,
+      "length": 346,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 75009,
+      "return": 319.0,
+      "length": 319,
+      "terminated": true,
+      "truncated": false
+    }
+  ],
+  "mean_greedy": [
+    {
+      "seed": 75000,
+      "return": 500.0,
+      "length": 500,
+      "terminated": false,
+      "truncated": true
+    },
+    {
+      "seed": 75001,
+      "return": 500.0,
+      "length": 500,
+      "terminated": false,
+      "truncated": true
+    },
+    {
+      "seed": 75002,
+      "return": 500.0,
+      "length": 500,
+      "terminated": false,
+      "truncated": true
+    },
+    {
+      "seed": 75003,
+      "return": 500.0,
+      "length": 500,
+      "terminated": false,
+      "truncated": true
+    },
+    {
+      "seed": 75004,
+      "return": 500.0,
+      "length": 500,
+      "terminated": false,
+      "truncated": true
+    },
+    {
+      "seed": 75005,
+      "return": 500.0,
+      "length": 500,
+      "terminated": false,
+      "truncated": true
+    },
+    {
+      "seed": 75006,
+      "return": 500.0,
+      "length": 500,
+      "terminated": false,
+      "truncated": true
+    },
+    {
+      "seed": 75007,
+      "return": 500.0,
+      "length": 500,
+      "terminated": false,
+      "truncated": true
+    },
+    {
+      "seed": 75008,
+      "return": 500.0,
+      "length": 500,
+      "terminated": false,
+      "truncated": true
+    },
+    {
+      "seed": 75009,
+      "return": 500.0,
+      "length": 500,
+      "terminated": false,
+      "truncated": true
+    }
+  ],
+  "mean_sampled": [
+    {
+      "seed": 75000,
+      "return": 500.0,
+      "length": 500,
+      "terminated": false,
+      "truncated": true
+    },
+    {
+      "seed": 75001,
+      "return": 500.0,
+      "length": 500,
+      "terminated": false,
+      "truncated": true
+    },
+    {
+      "seed": 75002,
+      "return": 500.0,
+      "length": 500,
+      "terminated": false,
+      "truncated": true
+    },
+    {
+      "seed": 75003,
+      "return": 500.0,
+      "length": 500,
+      "terminated": false,
+      "truncated": true
+    },
+    {
+      "seed": 75004,
+      "return": 500.0,
+      "length": 500,
+      "terminated": false,
+      "truncated": true
+    },
+    {
+      "seed": 75005,
+      "return": 500.0,
+      "length": 500,
+      "terminated": false,
+      "truncated": true
+    },
+    {
+      "seed": 75006,
+      "return": 500.0,
+      "length": 500,
+      "terminated": false,
+      "truncated": true
+    },
+    {
+      "seed": 75007,
+      "return": 500.0,
+      "length": 500,
+      "terminated": false,
+      "truncated": true
+    },
+    {
+      "seed": 75008,
+      "return": 500.0,
+      "length": 500,
+      "terminated": false,
+      "truncated": true
+    },
+    {
+      "seed": 75009,
+      "return": 500.0,
+      "length": 500,
+      "terminated": false,
+      "truncated": true
+    }
+  ]
+}

@@ -1,0 +1,391 @@
+series,model,seed,mode,return_mean,validation_max,validation_last,first_threshold_step,episodes_at_limit
+original,DQN,100,mean_weights,103.7,233.9,108.4,,0
+original,DQN,101,mean_weights,128.56666666666666,277.0,131.2,,0
+original,DQN,102,mean_weights,112.0,282.9,111.1,,0
+original,DQN,103,mean_weights,172.76666666666668,295.9,171.1,,0
+original,DQN,104,mean_weights,111.36666666666666,418.3,113.1,,0
+original,DQN,105,mean_weights,123.36666666666666,500.0,122.9,10000,0
+original,DQN,106,mean_weights,102.23333333333333,204.2,104.1,,0
+original,DQN,107,mean_weights,103.16666666666667,269.3,101.4,,0
+original,DQN,108,mean_weights,180.7,387.6,179.8,,0
+original,DQN,109,mean_weights,260.96666666666664,454.7,231.7,,0
+tuned,DQN,400,mean_weights,500.0,500.0,500.0,40000,30
+tuned,DQN,401,mean_weights,131.73333333333332,500.0,133.3,70000,0
+tuned,DQN,402,mean_weights,500.0,500.0,500.0,60000,30
+tuned,DQN,403,mean_weights,500.0,500.0,500.0,100000,30
+tuned,DQN,404,mean_weights,500.0,500.0,500.0,70000,30
+tuned,DQN,405,mean_weights,500.0,500.0,500.0,60000,30
+tuned,DQN,406,mean_weights,500.0,500.0,500.0,40000,30
+tuned,DQN,407,mean_weights,500.0,500.0,500.0,50000,30
+tuned,DQN,408,mean_weights,500.0,500.0,500.0,70000,30
+tuned,DQN,409,mean_weights,500.0,500.0,500.0,60000,30
+original,Noisy-DQN,100,mean_weights,32.03333333333333,215.2,40.3,,0
+original,Noisy-DQN,100,resampled_noise,38.266666666666666,215.2,40.3,,0
+original,Noisy-DQN,101,mean_weights,168.2,188.3,151.7,,0
+original,Noisy-DQN,101,resampled_noise,156.9,188.3,151.7,,0
+original,Noisy-DQN,102,mean_weights,96.06666666666666,260.0,97.1,,0
+original,Noisy-DQN,102,resampled_noise,100.6,260.0,97.1,,0
+original,Noisy-DQN,103,mean_weights,268.53333333333336,279.8,279.8,,1
+original,Noisy-DQN,103,resampled_noise,269.73333333333335,279.8,279.8,,2
+original,Noisy-DQN,104,mean_weights,132.13333333333333,186.3,128.8,,0
+original,Noisy-DQN,104,resampled_noise,130.4,186.3,128.8,,0
+original,Noisy-DQN,105,mean_weights,24.4,274.7,37.2,,0
+original,Noisy-DQN,105,resampled_noise,27.7,274.7,37.2,,0
+original,Noisy-DQN,106,mean_weights,92.3,292.4,91.1,,0
+original,Noisy-DQN,106,resampled_noise,93.56666666666666,292.4,91.1,,0
+original,Noisy-DQN,107,mean_weights,200.2,196.9,196.9,,0
+original,Noisy-DQN,107,resampled_noise,199.3,196.9,196.9,,0
+original,Noisy-DQN,108,mean_weights,212.23333333333332,265.5,229.2,,0
+original,Noisy-DQN,108,resampled_noise,196.03333333333333,265.5,229.2,,0
+original,Noisy-DQN,109,mean_weights,85.26666666666667,183.7,82.4,,0
+original,Noisy-DQN,109,resampled_noise,84.46666666666667,183.7,82.4,,0
+tuned,Noisy-DQN,400,mean_weights,500.0,500.0,500.0,50000,30
+tuned,Noisy-DQN,400,resampled_noise,500.0,500.0,500.0,50000,30
+tuned,Noisy-DQN,401,mean_weights,500.0,500.0,500.0,80000,30
+tuned,Noisy-DQN,401,resampled_noise,500.0,500.0,500.0,80000,30
+tuned,Noisy-DQN,402,mean_weights,500.0,500.0,500.0,70000,30
+tuned,Noisy-DQN,402,resampled_noise,500.0,500.0,500.0,70000,30
+tuned,Noisy-DQN,403,mean_weights,500.0,500.0,500.0,40000,30
+tuned,Noisy-DQN,403,resampled_noise,500.0,500.0,500.0,40000,30
+tuned,Noisy-DQN,404,mean_weights,500.0,500.0,500.0,30000,30
+tuned,Noisy-DQN,404,resampled_noise,500.0,500.0,500.0,30000,30
+tuned,Noisy-DQN,405,mean_weights,500.0,500.0,500.0,40000,30
+tuned,Noisy-DQN,405,resampled_noise,500.0,500.0,500.0,40000,30
+tuned,Noisy-DQN,406,mean_weights,500.0,500.0,500.0,80000,30
+tuned,Noisy-DQN,406,resampled_noise,500.0,500.0,500.0,80000,30
+tuned,Noisy-DQN,407,mean_weights,500.0,500.0,500.0,50000,30
+tuned,Noisy-DQN,407,resampled_noise,500.0,500.0,500.0,50000,30
+tuned,Noisy-DQN,408,mean_weights,345.6666666666667,500.0,347.6,60000,0
+tuned,Noisy-DQN,408,resampled_noise,348.1333333333333,500.0,347.6,60000,0
+tuned,Noisy-DQN,409,mean_weights,500.0,500.0,500.0,70000,30
+tuned,Noisy-DQN,409,resampled_noise,500.0,500.0,500.0,70000,30
+original,A3C,200,behaviour,40.7,51.4,51.4,,0
+original,A3C,200,mean_greedy,63.93333333333333,51.4,51.4,,0
+original,A3C,201,behaviour,49.8,52.3,43.2,,0
+original,A3C,201,mean_greedy,127.6,52.3,43.2,,0
+original,A3C,202,behaviour,56.13333333333333,63.7,32.3,,0
+original,A3C,202,mean_greedy,87.36666666666666,63.7,32.3,,0
+original,A3C,203,behaviour,41.43333333333333,52.9,37.8,,0
+original,A3C,203,mean_greedy,84.83333333333333,52.9,37.8,,0
+original,A3C,204,behaviour,56.166666666666664,40.5,31.7,,0
+original,A3C,204,mean_greedy,133.56666666666666,40.5,31.7,,0
+original,A3C,205,behaviour,64.73333333333333,64.3,64.3,,0
+original,A3C,205,mean_greedy,357.8666666666667,64.3,64.3,,7
+original,A3C,206,behaviour,39.46666666666667,44.5,36.7,,0
+original,A3C,206,mean_greedy,68.23333333333333,44.5,36.7,,0
+original,A3C,207,behaviour,46.9,53.3,45.7,,0
+original,A3C,207,mean_greedy,437.8666666666667,53.3,45.7,,18
+original,A3C,208,behaviour,56.86666666666667,57.6,42.3,,0
+original,A3C,208,mean_greedy,96.4,57.6,42.3,,0
+original,A3C,209,behaviour,43.93333333333333,47.9,37.0,,0
+original,A3C,209,mean_greedy,145.16666666666666,47.9,37.0,,0
+tuned,A3C,400,behaviour,500.0,500.0,500.0,150000,30
+tuned,A3C,400,mean_greedy,500.0,500.0,500.0,150000,30
+tuned,A3C,400,mean_sampled,500.0,500.0,500.0,150000,30
+tuned,A3C,401,behaviour,500.0,500.0,500.0,100000,30
+tuned,A3C,401,mean_greedy,500.0,500.0,500.0,100000,30
+tuned,A3C,401,mean_sampled,500.0,500.0,500.0,100000,30
+tuned,A3C,402,behaviour,500.0,500.0,500.0,150000,30
+tuned,A3C,402,mean_greedy,500.0,500.0,500.0,150000,30
+tuned,A3C,402,mean_sampled,500.0,500.0,500.0,150000,30
+tuned,A3C,403,behaviour,500.0,500.0,500.0,250000,30
+tuned,A3C,403,mean_greedy,500.0,500.0,500.0,250000,30
+tuned,A3C,403,mean_sampled,500.0,500.0,500.0,250000,30
+tuned,A3C,404,behaviour,500.0,500.0,500.0,150000,30
+tuned,A3C,404,mean_greedy,500.0,500.0,500.0,150000,30
+tuned,A3C,404,mean_sampled,500.0,500.0,500.0,150000,30
+tuned,A3C,405,behaviour,500.0,500.0,500.0,150000,30
+tuned,A3C,405,mean_greedy,500.0,500.0,500.0,150000,30
+tuned,A3C,405,mean_sampled,500.0,500.0,500.0,150000,30
+tuned,A3C,406,behaviour,500.0,500.0,500.0,100000,30
+tuned,A3C,406,mean_greedy,500.0,500.0,500.0,100000,30
+tuned,A3C,406,mean_sampled,500.0,500.0,500.0,100000,30
+tuned,A3C,407,behaviour,500.0,500.0,500.0,200000,30
+tuned,A3C,407,mean_greedy,500.0,500.0,500.0,200000,30
+tuned,A3C,407,mean_sampled,500.0,500.0,500.0,200000,30
+tuned,A3C,408,behaviour,500.0,500.0,500.0,200000,30
+tuned,A3C,408,mean_greedy,500.0,500.0,500.0,200000,30
+tuned,A3C,408,mean_sampled,500.0,500.0,500.0,200000,30
+tuned,A3C,409,behaviour,500.0,500.0,500.0,250000,30
+tuned,A3C,409,mean_greedy,500.0,500.0,500.0,250000,30
+tuned,A3C,409,mean_sampled,500.0,500.0,500.0,250000,30
+original,"Noisy-A3C, фактор.",200,behaviour,54.56666666666667,57.3,49.6,,0
+original,"Noisy-A3C, фактор.",200,mean_greedy,437.3333333333333,57.3,49.6,,20
+original,"Noisy-A3C, фактор.",200,mean_sampled,51.36666666666667,57.3,49.6,,0
+original,"Noisy-A3C, фактор.",201,behaviour,49.7,72.2,72.2,,0
+original,"Noisy-A3C, фактор.",201,mean_greedy,288.3,72.2,72.2,,0
+original,"Noisy-A3C, фактор.",201,mean_sampled,41.96666666666667,72.2,72.2,,0
+original,"Noisy-A3C, фактор.",202,behaviour,46.8,57.8,45.4,,0
+original,"Noisy-A3C, фактор.",202,mean_greedy,153.76666666666668,57.8,45.4,,0
+original,"Noisy-A3C, фактор.",202,mean_sampled,48.333333333333336,57.8,45.4,,0
+original,"Noisy-A3C, фактор.",203,behaviour,51.6,76.5,76.5,,0
+original,"Noisy-A3C, фактор.",203,mean_greedy,448.2,76.5,76.5,,24
+original,"Noisy-A3C, фактор.",203,mean_sampled,42.13333333333333,76.5,76.5,,0
+original,"Noisy-A3C, фактор.",204,behaviour,49.7,51.5,46.5,,0
+original,"Noisy-A3C, фактор.",204,mean_greedy,157.03333333333333,51.5,46.5,,0
+original,"Noisy-A3C, фактор.",204,mean_sampled,50.63333333333333,51.5,46.5,,0
+original,"Noisy-A3C, фактор.",205,behaviour,43.03333333333333,46.5,42.0,,0
+original,"Noisy-A3C, фактор.",205,mean_greedy,385.53333333333336,46.5,42.0,,11
+original,"Noisy-A3C, фактор.",205,mean_sampled,49.833333333333336,46.5,42.0,,0
+original,"Noisy-A3C, фактор.",206,behaviour,42.03333333333333,55.8,55.8,,0
+original,"Noisy-A3C, фактор.",206,mean_greedy,50.56666666666667,55.8,55.8,,0
+original,"Noisy-A3C, фактор.",206,mean_sampled,54.9,55.8,55.8,,0
+original,"Noisy-A3C, фактор.",207,behaviour,51.63333333333333,55.6,51.1,,0
+original,"Noisy-A3C, фактор.",207,mean_greedy,335.6666666666667,55.6,51.1,,5
+original,"Noisy-A3C, фактор.",207,mean_sampled,48.7,55.6,51.1,,0
+original,"Noisy-A3C, фактор.",208,behaviour,49.46666666666667,61.8,58.2,,0
+original,"Noisy-A3C, фактор.",208,mean_greedy,99.6,61.8,58.2,,0
+original,"Noisy-A3C, фактор.",208,mean_sampled,59.03333333333333,61.8,58.2,,0
+original,"Noisy-A3C, фактор.",209,behaviour,53.13333333333333,68.2,45.6,,0
+original,"Noisy-A3C, фактор.",209,mean_greedy,312.4,68.2,45.6,,8
+original,"Noisy-A3C, фактор.",209,mean_sampled,51.36666666666667,68.2,45.6,,0
+tuned,"Noisy-A3C, фактор.",400,behaviour,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, фактор.",400,mean_greedy,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, фактор.",400,mean_sampled,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, фактор.",401,behaviour,484.46666666666664,500.0,500.0,50000,29
+tuned,"Noisy-A3C, фактор.",401,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,"Noisy-A3C, фактор.",401,mean_sampled,500.0,500.0,500.0,50000,30
+tuned,"Noisy-A3C, фактор.",402,behaviour,500.0,500.0,500.0,250000,30
+tuned,"Noisy-A3C, фактор.",402,mean_greedy,500.0,500.0,500.0,250000,30
+tuned,"Noisy-A3C, фактор.",402,mean_sampled,500.0,500.0,500.0,250000,30
+tuned,"Noisy-A3C, фактор.",403,behaviour,486.5,500.0,500.0,200000,29
+tuned,"Noisy-A3C, фактор.",403,mean_greedy,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, фактор.",403,mean_sampled,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, фактор.",404,behaviour,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, фактор.",404,mean_greedy,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, фактор.",404,mean_sampled,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, фактор.",405,behaviour,500.0,500.0,500.0,150000,30
+tuned,"Noisy-A3C, фактор.",405,mean_greedy,500.0,500.0,500.0,150000,30
+tuned,"Noisy-A3C, фактор.",405,mean_sampled,500.0,500.0,500.0,150000,30
+tuned,"Noisy-A3C, фактор.",406,behaviour,500.0,500.0,500.0,300000,30
+tuned,"Noisy-A3C, фактор.",406,mean_greedy,500.0,500.0,500.0,300000,30
+tuned,"Noisy-A3C, фактор.",406,mean_sampled,500.0,500.0,500.0,300000,30
+tuned,"Noisy-A3C, фактор.",407,behaviour,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, фактор.",407,mean_greedy,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, фактор.",407,mean_sampled,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, фактор.",408,behaviour,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, фактор.",408,mean_greedy,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, фактор.",408,mean_sampled,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, фактор.",409,behaviour,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, фактор.",409,mean_greedy,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, фактор.",409,mean_sampled,500.0,500.0,500.0,200000,30
+original,"Noisy-A3C, незав.",200,behaviour,33.5,53.1,39.2,,0
+original,"Noisy-A3C, незав.",200,mean_greedy,71.23333333333333,53.1,39.2,,0
+original,"Noisy-A3C, незав.",200,mean_sampled,49.733333333333334,53.1,39.2,,0
+original,"Noisy-A3C, незав.",201,behaviour,49.13333333333333,57.5,44.5,,0
+original,"Noisy-A3C, незав.",201,mean_greedy,302.3666666666667,57.5,44.5,,0
+original,"Noisy-A3C, незав.",201,mean_sampled,56.1,57.5,44.5,,0
+original,"Noisy-A3C, незав.",202,behaviour,44.53333333333333,76.3,76.3,,0
+original,"Noisy-A3C, незав.",202,mean_greedy,131.13333333333333,76.3,76.3,,0
+original,"Noisy-A3C, незав.",202,mean_sampled,52.56666666666667,76.3,76.3,,0
+original,"Noisy-A3C, незав.",203,behaviour,50.93333333333333,57.1,54.8,,0
+original,"Noisy-A3C, незав.",203,mean_greedy,155.9,57.1,54.8,,1
+original,"Noisy-A3C, незав.",203,mean_sampled,46.8,57.1,54.8,,0
+original,"Noisy-A3C, незав.",204,behaviour,49.93333333333333,62.0,62.0,,0
+original,"Noisy-A3C, незав.",204,mean_greedy,403.5,62.0,62.0,,14
+original,"Noisy-A3C, незав.",204,mean_sampled,47.0,62.0,62.0,,0
+original,"Noisy-A3C, незав.",205,behaviour,39.86666666666667,52.5,39.3,,0
+original,"Noisy-A3C, незав.",205,mean_greedy,77.0,52.5,39.3,,0
+original,"Noisy-A3C, незав.",205,mean_sampled,53.733333333333334,52.5,39.3,,0
+original,"Noisy-A3C, незав.",206,behaviour,51.733333333333334,59.0,59.0,,0
+original,"Noisy-A3C, незав.",206,mean_greedy,359.7,59.0,59.0,,14
+original,"Noisy-A3C, незав.",206,mean_sampled,55.5,59.0,59.0,,0
+original,"Noisy-A3C, незав.",207,behaviour,53.166666666666664,52.4,26.8,,0
+original,"Noisy-A3C, незав.",207,mean_greedy,270.0,52.4,26.8,,1
+original,"Noisy-A3C, незав.",207,mean_sampled,55.7,52.4,26.8,,0
+original,"Noisy-A3C, незав.",208,behaviour,56.96666666666667,70.8,61.1,,0
+original,"Noisy-A3C, незав.",208,mean_greedy,146.03333333333333,70.8,61.1,,0
+original,"Noisy-A3C, незав.",208,mean_sampled,59.0,70.8,61.1,,0
+original,"Noisy-A3C, незав.",209,behaviour,51.233333333333334,55.3,27.8,,0
+original,"Noisy-A3C, незав.",209,mean_greedy,65.66666666666667,55.3,27.8,,0
+original,"Noisy-A3C, незав.",209,mean_sampled,47.8,55.3,27.8,,0
+tuned,"Noisy-A3C, незав.",400,behaviour,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, незав.",400,mean_greedy,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, незав.",400,mean_sampled,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, незав.",401,behaviour,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, незав.",401,mean_greedy,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, незав.",401,mean_sampled,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, незав.",402,behaviour,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, незав.",402,mean_greedy,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, незав.",402,mean_sampled,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, незав.",403,behaviour,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, незав.",403,mean_greedy,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, незав.",403,mean_sampled,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, незав.",404,behaviour,500.0,500.0,500.0,100000,30
+tuned,"Noisy-A3C, незав.",404,mean_greedy,500.0,500.0,500.0,100000,30
+tuned,"Noisy-A3C, незав.",404,mean_sampled,500.0,500.0,500.0,100000,30
+tuned,"Noisy-A3C, незав.",405,behaviour,495.8333333333333,500.0,500.0,150000,29
+tuned,"Noisy-A3C, незав.",405,mean_greedy,500.0,500.0,500.0,150000,30
+tuned,"Noisy-A3C, незав.",405,mean_sampled,500.0,500.0,500.0,150000,30
+tuned,"Noisy-A3C, незав.",406,behaviour,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, незав.",406,mean_greedy,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, незав.",406,mean_sampled,500.0,500.0,500.0,200000,30
+tuned,"Noisy-A3C, незав.",407,behaviour,500.0,500.0,500.0,150000,30
+tuned,"Noisy-A3C, незав.",407,mean_greedy,500.0,500.0,500.0,150000,30
+tuned,"Noisy-A3C, незав.",407,mean_sampled,500.0,500.0,500.0,150000,30
+tuned,"Noisy-A3C, незав.",408,behaviour,491.93333333333334,500.0,500.0,150000,29
+tuned,"Noisy-A3C, незав.",408,mean_greedy,500.0,500.0,500.0,150000,30
+tuned,"Noisy-A3C, незав.",408,mean_sampled,500.0,500.0,500.0,150000,30
+tuned,"Noisy-A3C, незав.",409,behaviour,500.0,500.0,500.0,150000,30
+tuned,"Noisy-A3C, незав.",409,mean_greedy,500.0,500.0,500.0,150000,30
+tuned,"Noisy-A3C, незав.",409,mean_sampled,500.0,500.0,500.0,150000,30
+original,PPO,200,behaviour,93.7,163.0,101.2,,0
+original,PPO,200,mean_greedy,126.8,163.0,101.2,,0
+original,PPO,201,behaviour,142.46666666666667,173.8,102.5,,0
+original,PPO,201,mean_greedy,158.83333333333334,173.8,102.5,,0
+original,PPO,202,behaviour,172.76666666666668,326.9,171.5,,1
+original,PPO,202,mean_greedy,220.36666666666667,326.9,171.5,,0
+original,PPO,203,behaviour,130.36666666666667,151.0,121.0,,0
+original,PPO,203,mean_greedy,488.53333333333336,151.0,121.0,,25
+original,PPO,204,behaviour,170.56666666666666,154.0,141.2,,0
+original,PPO,204,mean_greedy,145.96666666666667,154.0,141.2,,0
+original,PPO,205,behaviour,179.26666666666668,157.1,123.6,,0
+original,PPO,205,mean_greedy,190.03333333333333,157.1,123.6,,0
+original,PPO,206,behaviour,195.53333333333333,213.5,213.5,,0
+original,PPO,206,mean_greedy,189.26666666666668,213.5,213.5,,0
+original,PPO,207,behaviour,119.8,275.7,141.1,,1
+original,PPO,207,mean_greedy,121.4,275.7,141.1,,0
+original,PPO,208,behaviour,141.2,177.4,177.4,,1
+original,PPO,208,mean_greedy,500.0,177.4,177.4,,30
+original,PPO,209,behaviour,115.0,170.9,114.7,,0
+original,PPO,209,mean_greedy,132.96666666666667,170.9,114.7,,0
+tuned,PPO,400,behaviour,500.0,500.0,500.0,50000,30
+tuned,PPO,400,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,PPO,401,behaviour,500.0,500.0,500.0,50000,30
+tuned,PPO,401,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,PPO,402,behaviour,500.0,500.0,500.0,50000,30
+tuned,PPO,402,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,PPO,403,behaviour,500.0,500.0,500.0,50000,30
+tuned,PPO,403,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,PPO,404,behaviour,500.0,500.0,500.0,50000,30
+tuned,PPO,404,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,PPO,405,behaviour,500.0,500.0,500.0,50000,30
+tuned,PPO,405,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,PPO,406,behaviour,500.0,500.0,500.0,50000,30
+tuned,PPO,406,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,PPO,407,behaviour,500.0,500.0,500.0,50000,30
+tuned,PPO,407,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,PPO,408,behaviour,500.0,500.0,500.0,50000,30
+tuned,PPO,408,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,PPO,409,behaviour,500.0,500.0,500.0,50000,30
+tuned,PPO,409,mean_greedy,500.0,500.0,500.0,50000,30
+original,"Noisy-PPO, фактор.",200,behaviour,103.93333333333334,164.7,123.3,,0
+original,"Noisy-PPO, фактор.",200,mean_greedy,158.93333333333334,164.7,123.3,,0
+original,"Noisy-PPO, фактор.",200,mean_sampled,119.93333333333334,164.7,123.3,,0
+original,"Noisy-PPO, фактор.",201,behaviour,58.43333333333333,174.4,49.1,,0
+original,"Noisy-PPO, фактор.",201,mean_greedy,130.16666666666666,174.4,49.1,,0
+original,"Noisy-PPO, фактор.",201,mean_sampled,51.733333333333334,174.4,49.1,,0
+original,"Noisy-PPO, фактор.",202,behaviour,141.73333333333332,175.0,156.2,,0
+original,"Noisy-PPO, фактор.",202,mean_greedy,219.1,175.0,156.2,,0
+original,"Noisy-PPO, фактор.",202,mean_sampled,157.13333333333333,175.0,156.2,,1
+original,"Noisy-PPO, фактор.",203,behaviour,193.8,204.5,204.5,,0
+original,"Noisy-PPO, фактор.",203,mean_greedy,261.03333333333336,204.5,204.5,,0
+original,"Noisy-PPO, фактор.",203,mean_sampled,133.6,204.5,204.5,,0
+original,"Noisy-PPO, фактор.",204,behaviour,107.53333333333333,206.4,123.9,,0
+original,"Noisy-PPO, фактор.",204,mean_greedy,222.4,206.4,123.9,,0
+original,"Noisy-PPO, фактор.",204,mean_sampled,133.56666666666666,206.4,123.9,,0
+original,"Noisy-PPO, фактор.",205,behaviour,62.666666666666664,161.4,140.0,,0
+original,"Noisy-PPO, фактор.",205,mean_greedy,500.0,161.4,140.0,,30
+original,"Noisy-PPO, фактор.",205,mean_sampled,43.8,161.4,140.0,,0
+original,"Noisy-PPO, фактор.",206,behaviour,44.63333333333333,216.2,54.2,,0
+original,"Noisy-PPO, фактор.",206,mean_greedy,22.366666666666667,216.2,54.2,,0
+original,"Noisy-PPO, фактор.",206,mean_sampled,33.2,216.2,54.2,,0
+original,"Noisy-PPO, фактор.",207,behaviour,88.0,142.2,77.1,,1
+original,"Noisy-PPO, фактор.",207,mean_greedy,500.0,142.2,77.1,,30
+original,"Noisy-PPO, фактор.",207,mean_sampled,103.53333333333333,142.2,77.1,,3
+original,"Noisy-PPO, фактор.",208,behaviour,142.36666666666667,185.4,185.4,,0
+original,"Noisy-PPO, фактор.",208,mean_greedy,131.0,185.4,185.4,,0
+original,"Noisy-PPO, фактор.",208,mean_sampled,137.06666666666666,185.4,185.4,,0
+original,"Noisy-PPO, фактор.",209,behaviour,136.66666666666666,184.9,184.9,,0
+original,"Noisy-PPO, фактор.",209,mean_greedy,227.16666666666666,184.9,184.9,,0
+original,"Noisy-PPO, фактор.",209,mean_sampled,156.76666666666668,184.9,184.9,,0
+tuned,"Noisy-PPO, фактор.",400,behaviour,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",400,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",400,mean_sampled,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",401,behaviour,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",401,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",401,mean_sampled,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",402,behaviour,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",402,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",402,mean_sampled,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",403,behaviour,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",403,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",403,mean_sampled,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",404,behaviour,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",404,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",404,mean_sampled,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",405,behaviour,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",405,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",405,mean_sampled,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",406,behaviour,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",406,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",406,mean_sampled,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",407,behaviour,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",407,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",407,mean_sampled,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",408,behaviour,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",408,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",408,mean_sampled,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",409,behaviour,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",409,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, фактор.",409,mean_sampled,500.0,500.0,500.0,50000,30
+original,"Noisy-PPO, незав.",200,behaviour,129.33333333333334,137.8,106.4,,0
+original,"Noisy-PPO, незав.",200,mean_greedy,141.26666666666668,137.8,106.4,,0
+original,"Noisy-PPO, незав.",200,mean_sampled,122.36666666666666,137.8,106.4,,0
+original,"Noisy-PPO, незав.",201,behaviour,134.63333333333333,177.4,174.1,,0
+original,"Noisy-PPO, незав.",201,mean_greedy,495.3666666666667,177.4,174.1,,29
+original,"Noisy-PPO, незав.",201,mean_sampled,131.1,177.4,174.1,,0
+original,"Noisy-PPO, незав.",202,behaviour,106.66666666666667,176.8,131.7,,1
+original,"Noisy-PPO, незав.",202,mean_greedy,129.86666666666667,176.8,131.7,,0
+original,"Noisy-PPO, незав.",202,mean_sampled,101.33333333333333,176.8,131.7,,0
+original,"Noisy-PPO, незав.",203,behaviour,92.13333333333334,122.9,121.8,,0
+original,"Noisy-PPO, незав.",203,mean_greedy,150.93333333333334,122.9,121.8,,0
+original,"Noisy-PPO, незав.",203,mean_sampled,116.26666666666667,122.9,121.8,,0
+original,"Noisy-PPO, незав.",204,behaviour,243.83333333333334,246.5,246.5,,4
+original,"Noisy-PPO, незав.",204,mean_greedy,466.03333333333336,246.5,246.5,,27
+original,"Noisy-PPO, незав.",204,mean_sampled,234.36666666666667,246.5,246.5,,4
+original,"Noisy-PPO, незав.",205,behaviour,118.5,193.8,134.4,,0
+original,"Noisy-PPO, незав.",205,mean_greedy,190.13333333333333,193.8,134.4,,0
+original,"Noisy-PPO, незав.",205,mean_sampled,117.83333333333333,193.8,134.4,,0
+original,"Noisy-PPO, незав.",206,behaviour,153.06666666666666,181.9,181.9,,1
+original,"Noisy-PPO, незав.",206,mean_greedy,274.1666666666667,181.9,181.9,,0
+original,"Noisy-PPO, незав.",206,mean_sampled,129.56666666666666,181.9,181.9,,0
+original,"Noisy-PPO, незав.",207,behaviour,107.53333333333333,189.4,115.5,,0
+original,"Noisy-PPO, незав.",207,mean_greedy,500.0,189.4,115.5,,30
+original,"Noisy-PPO, незав.",207,mean_sampled,129.43333333333334,189.4,115.5,,0
+original,"Noisy-PPO, незав.",208,behaviour,143.83333333333334,135.9,86.2,,2
+original,"Noisy-PPO, незав.",208,mean_greedy,175.6,135.9,86.2,,0
+original,"Noisy-PPO, незав.",208,mean_sampled,125.06666666666666,135.9,86.2,,0
+original,"Noisy-PPO, незав.",209,behaviour,174.4,153.8,151.0,,0
+original,"Noisy-PPO, незав.",209,mean_greedy,207.36666666666667,153.8,151.0,,0
+original,"Noisy-PPO, незав.",209,mean_sampled,174.06666666666666,153.8,151.0,,1
+tuned,"Noisy-PPO, незав.",400,behaviour,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",400,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",400,mean_sampled,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",401,behaviour,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",401,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",401,mean_sampled,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",402,behaviour,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",402,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",402,mean_sampled,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",403,behaviour,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",403,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",403,mean_sampled,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",404,behaviour,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",404,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",404,mean_sampled,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",405,behaviour,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",405,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",405,mean_sampled,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",406,behaviour,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",406,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",406,mean_sampled,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",407,behaviour,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",407,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",407,mean_sampled,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",408,behaviour,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",408,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",408,mean_sampled,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",409,behaviour,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",409,mean_greedy,500.0,500.0,500.0,50000,30
+tuned,"Noisy-PPO, незав.",409,mean_sampled,500.0,500.0,500.0,50000,30

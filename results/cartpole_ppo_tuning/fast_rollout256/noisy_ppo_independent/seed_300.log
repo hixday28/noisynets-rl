@@ -1,0 +1,7 @@
+noisy-ppo independent seed=300 step=0: 16.90
+noisy-ppo independent seed=300 step=50000: 134.80
+noisy-ppo independent seed=300 step=100000: 383.20
+noisy-ppo independent seed=300 step=150000: 454.90
+noisy-ppo independent seed=300 step=200000: 401.80
+noisy-ppo independent seed=300 step=250000: 472.00
+noisy-ppo independent seed=300 step=300000: 436.20

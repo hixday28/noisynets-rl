@@ -1,0 +1,154 @@
+{
+  "version": 1,
+  "target": {
+    "behaviour_mean": 475,
+    "mean_greedy_mean": 475
+  },
+  "training_seeds": [
+    300,
+    301,
+    302,
+    303
+  ],
+  "validation_environment_seeds": [
+    75000,
+    75001,
+    75002,
+    75003,
+    75004,
+    75005,
+    75006,
+    75007,
+    75008,
+    75009
+  ],
+  "tuning_assessment_environment_seeds": [
+    76000,
+    76001,
+    76002,
+    76003,
+    76004,
+    76005,
+    76006,
+    76007,
+    76008,
+    76009,
+    76010,
+    76011,
+    76012,
+    76013,
+    76014,
+    76015,
+    76016,
+    76017,
+    76018,
+    76019
+  ],
+  "final_training_seeds_excluded": [
+    400,
+    401,
+    402,
+    403,
+    404,
+    405,
+    406,
+    407,
+    408,
+    409
+  ],
+  "final_environment_seeds_excluded": [
+    85000,
+    85001,
+    85002,
+    85003,
+    85004,
+    85005,
+    85006,
+    85007,
+    85008,
+    85009,
+    85010,
+    85011,
+    85012,
+    85013,
+    85014,
+    85015,
+    85016,
+    85017,
+    85018,
+    85019,
+    85020,
+    85021,
+    85022,
+    85023,
+    85024,
+    85025,
+    85026,
+    85027,
+    85028,
+    85029
+  ],
+  "stages": [
+    {
+      "key": "lr001",
+      "seeds": [
+        300
+      ],
+      "steps": 100000,
+      "learning_rate": 0.001,
+      "anneal_lr": false,
+      "conditions": [
+        "baseline",
+        "independent",
+        "factorized"
+      ],
+      "assessment_episodes": 10
+    },
+    {
+      "key": "lr003_300k",
+      "seeds": [
+        301
+      ],
+      "steps": 300000,
+      "learning_rate": 0.003,
+      "anneal_lr": true,
+      "conditions": [
+        "baseline",
+        "independent",
+        "factorized"
+      ],
+      "assessment_episodes": 10
+    },
+    {
+      "key": "lr003_500k",
+      "seeds": [
+        302,
+        303
+      ],
+      "steps": 500000,
+      "learning_rate": 0.003,
+      "anneal_lr": true,
+      "conditions": [
+        "baseline",
+        "independent",
+        "factorized"
+      ],
+      "assessment_episodes": 20
+    }
+  ],
+  "shared_changes_relative_to_archived_policy": {
+    "gradient_clip": 40.0,
+    "baseline_entropy_coef": 0.001,
+    "noisy_entropy_coef": 0.0,
+    "workers": 4,
+    "rollout": 20,
+    "sigma0": 0.1
+  },
+  "notes": [
+    "Все попытки сохраняются, неуспешные не исключаются.",
+    "Оценивается последний чекпойнт, а не лучший момент по кривой.",
+    "Изменения learning rate, schedule и бюджета проверялись совместно; их отдельный причинный вклад не устанавливается.",
+    "Серия400–409 запускается только после проверки настроек на tuningseeds.",
+    "Стандартный A3C trainer и слой шума не изменялись; отдельный wrapper управляет Adam schedule и артефактами."
+  ]
+}

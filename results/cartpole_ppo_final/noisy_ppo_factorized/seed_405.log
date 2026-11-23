@@ -1,0 +1,7 @@
+noisy-ppo factorized seed=405 step=0: 25.20
+noisy-ppo factorized seed=405 step=50000: 500.00
+noisy-ppo factorized seed=405 step=100000: 500.00
+noisy-ppo factorized seed=405 step=150000: 500.00
+noisy-ppo factorized seed=405 step=200000: 500.00
+noisy-ppo factorized seed=405 step=250000: 500.00
+noisy-ppo factorized seed=405 step=300000: 500.00

@@ -1,0 +1,14 @@
+{
+  "families": [
+    "dqn",
+    "a3c",
+    "ppo"
+  ],
+  "expected_models": 80,
+  "verified_models": 80,
+  "verified_model_modes": 200,
+  "verified_episodes": 6000,
+  "all_verified": true,
+  "exact_episode_details": true,
+  "evaluation_seed_start": 85000
+}

@@ -1,0 +1,11 @@
+noisy-a3c factorized seed=406 step=0 behaviour=21.90 greedy=24.00 mean_sampled=23.00
+noisy-a3c factorized seed=406 step=50000 behaviour=116.30 greedy=164.10 mean_sampled=114.40
+noisy-a3c factorized seed=406 step=100000 behaviour=40.30 greedy=107.90 mean_sampled=60.00
+noisy-a3c factorized seed=406 step=150000 behaviour=382.70 greedy=500.00 mean_sampled=500.00
+noisy-a3c factorized seed=406 step=200000 behaviour=467.30 greedy=500.00 mean_sampled=500.00
+noisy-a3c factorized seed=406 step=250000 behaviour=425.70 greedy=500.00 mean_sampled=452.20
+noisy-a3c factorized seed=406 step=300000 behaviour=500.00 greedy=500.00 mean_sampled=500.00
+noisy-a3c factorized seed=406 step=350000 behaviour=500.00 greedy=500.00 mean_sampled=500.00
+noisy-a3c factorized seed=406 step=400000 behaviour=500.00 greedy=500.00 mean_sampled=500.00
+noisy-a3c factorized seed=406 step=450000 behaviour=479.60 greedy=500.00 mean_sampled=500.00
+noisy-a3c factorized seed=406 step=500000 behaviour=500.00 greedy=500.00 mean_sampled=500.00

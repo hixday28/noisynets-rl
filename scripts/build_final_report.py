@@ -64,6 +64,18 @@ def main():
         policy_comparisons = list(csv.DictReader(stream))
     pol = {(r['environment'],r['condition']):r for r in policy_conditions}
     assert len(pol)==12
+    cartpole = json.loads((ROOT / 'results/cartpole_analysis/summary.json').read_text())
+    cartpole_old = {row['model']: row for row in cartpole['groups'] if not row['updated']}
+    cartpole_new = [row for row in cartpole['groups'] if row['updated']]
+    assert len(cartpole_new) == 8
+    cartpole_steps = sum(row['config']['steps'] * 10 for row in cartpole_new)
+    cartpole_steps_text = f'{cartpole_steps:,}'.replace(',', '\u00a0')
+    cartpole_passed = sum(row['modes'][row['primary_mode']]['solved'] for row in cartpole_new)
+    stopping = json.loads((ROOT / 'results/cartpole_dqn_stopping/analysis/summary.json').read_text())
+    assert stopping['n_training_runs'] == 20 and stopping['exact_checkpoint_verification']['all_match']
+    stop_dqn, stop_noisy = stopping['conditions']
+    stop_dqn_mean = stop_dqn['modes']['mean_weights']['mean']
+    stopping_steps = f"{stopping['total_training_steps']:,}".replace(',', '\u00a0')
     comparisons = load_csv('comparisons.csv') + load_csv('ablations.csv')
     stochastic_comparisons = load_csv('stochastic_comparisons.csv')
     def comparison(env, method, ref='dqn', metric='final_mean'):
@@ -179,14 +191,14 @@ def main():
     page_word=('страницу' if pages%10==1 and pages%100!=11 else
                'страницы' if pages%10 in [2,3,4] and pages%100 not in [12,13,14] else 'страниц')
     count_run(pages); count_para.add_run(' '+page_word+', ')
-    count_run(11); count_para.add_run(' рисунков, '); count_run(15); count_para.add_run(' таблиц, ')
+    count_run(12); count_para.add_run(' рисунков, '); count_run(18); count_para.add_run(' таблиц, ')
     count_run(14); count_para.add_run(' источников.')
     block('''ОБУЧЕНИЕ С ПОДКРЕПЛЕНИЕМ, ГЛУБОКОЕ ОБУЧЕНИЕ, DQN, NOISYNETS, ПАРАМЕТРИЧЕСКИЙ ШУМ, ИССЛЕДОВАНИЕ СРЕДЫ, PYTORCH.
 
 Работа посвящена применению нейронных сетей с параметрическим шумом в задачах обучения с подкреплением. Объект исследования – агент, обучающийся управлению динамической системой по сигналу награды. Предмет исследования – влияние обучаемого шума в сетях ценности и политики на качество управления и использование переходов среды.
 
 Цель работы – реализовать и объяснить Noisy-DQN, Noisy-A3C и Noisy-PPO, сопоставить их с исходными алгоритмами и исследовать динамику обучаемого шума.''')
-    block(f'''Выполнены 200 обучений на CartPole-v1 и Acrobot-v1, по десять seed для каждого условия: 80 в серии DQN и 120 в серии A3C/PPO. Общий бюджет – 26 000 000 переходов. Рассмотрены независимый и факторизованный Gaussian-шум, качество, AUC, достижение порога и стабильность.
+    block(f'''В исходных сериях выполнены 200 обучений на CartPole-v1 и Acrobot-v1. В повторной серии на CartPole порог 475 достигнут у {cartpole_passed} из 80 итоговых моделей в основном режиме. Правило остановки по валидации DQN проверено в еще 20 обучениях.
 
 Польза шума зависит от алгоритма и режима оценки. Например, Noisy-DQN на Acrobot получает {f(ac_n['final_mean'])} по средним весам и {f(ac_n['stochastic_mean'])} с шумом. Подготовлены исходные журналы, модели, выполненные ноутбуки и объяснение реализации всех трёх семейств.''')
     heading('СОДЕРЖАНИЕ', 0, True, False)
@@ -227,7 +239,7 @@ AUC – площадь под кривой оценки, деленная на �
 
 Проверяется гипотеза об улучшении качества и динамики обучения при добавлении NoisyNets в DQN, A3C и PPO. Отдельно рассматриваются обучение σ, начальный масштаб, частота пересэмплирования и тип генератора. Подтверждение частной гипотезы не означает общего превосходства метода во всех задачах.
 
-На CartPole-v1 и Acrobot-v1 сохранены по десять запусков каждого условия. Серия DQN содержит 80 обучений и 11 млн переходов, серия A3C/PPO – 120 обучений и 15 млн переходов. Протоколы фиксировались до соответствующих запусков. Пилот хранится отдельно.
+В исходных сериях CartPole-v1 и Acrobot-v1 сохранены по десять запусков каждого условия. Повторное обучение на CartPole с отдельной настройкой гиперпараметров описано в разделе 8. Протоколы фиксировались до соответствующих итоговых запусков.
 
 Практический результат – исходный код, выполненный ноутбук, журналы, модели и данная записка.''')
     heading('1 Анализ задачи и подходов к исследованию', 1, True)
@@ -337,7 +349,7 @@ ReplayBuffer в replay.py хранит переходы в кольцевом м
 
 Для actor-critic добавлены policy_networks.py с общим блоком, actor и critic, actorcritic.py с обоими циклами обучения и policy_analysis.py с проверкой результатов. DQN и actor-critic имеют отдельные манифесты и каталоги данных.
 
-Исходный код и результаты опубликованы в https://github.com/hixday28/noisynets-rl. Ноутбук 03_all_models.ipynb охватывает все модели задания; 02_final_study.ipynb содержит подробности DQN. Пилот не включен в итоговую статистику.''')
+Исходный код и результаты опубликованы в https://github.com/hixday28/noisynets-rl. Ноутбуки 02_final_study.ipynb и 03_all_models.ipynb описывают исходные серии, 04_cartpole.ipynb – повторную. Пилот хранится отдельно.''')
     heading('3.2 Среды и архитектуры', 2)
     block('''В CartPole-v1 агент удерживает перевернутый маятник, прикладывая к тележке силу влево или вправо [6]. Наблюдение содержит положение и скорость тележки, угол и угловую скорость маятника. За каждый шаг начисляется единица награды. Эпизод ограничен 500 шагами и может закончиться раньше при выходе состояния за допустимые границы.
 
@@ -544,7 +556,7 @@ ReplayBuffer в replay.py хранит переходы в кольцевом м
 
 У PPO во всех rollout проверено практически нулевое начальное log-отношение вероятностей. ε сохраняется до завершения четырех эпох; μ и σ обновляются. Такая проверка отличает шумовую параметризацию от случайной подмены политики между числителем и знаменателем surrogate.
 
-Новый ноутбук повторно проходит 9 600 отложенных эпизодов всех 120 моделей и сопоставляет награды, длины и признаки завершения. Это дополняет ранее проверенные 4 200 эпизодов DQN. Полученная проверка относится к сохраненным моделям и не утверждает побитовой повторяемости асинхронного обучения.''')
+Ноутбук 03_all_models.ipynb повторно проходит 9 600 отложенных эпизодов 120 моделей исходной серии A3C/PPO и сопоставляет награды, длины и признаки завершения. Это дополняет проверенные 4 200 эпизодов DQN. Порядок обновлений при повторном обучении A3C зависит от планировщика потоков.''')
 
     heading('7 Обсуждение и практические ограничения', 1, True)
     heading('7.1 Интерпретация результатов', 2)
@@ -583,17 +595,68 @@ NoisyLinear требует хранения μ, σ и буферов шума. �
 Для новой задачи целесообразно сохранять базовый DQN, несколько seed и одинаковый бюджет до сравнения настроек шума. Выбор σ₀ по одному удачному обучению может отражать случайную траекторию. Представленная серия дает проверяемый пример такого сравнения, но не готовую универсальную настройку.
 
 Воспроизведение организовано на двух уровнях: повторный анализ опубликованных журналов и новый запуск всей серии в отдельном каталоге. Чекпойнты сохраняют веса и конфигурацию, но не состояние оптимизатора и replay; они предназначены для оценки, а не продолжения прерванного обучения. Команды приведены в приложении А.''')
+    heading('8 Повторное обучение на CartPole', 1, True)
+    heading('8.1 Диагностика и протокол', 2)
+    block('''В исходной серии на CartPole выполнены 20 запусков DQN и 60 запусков A3C/PPO. У A3C/PPO стохастическая валидация ни разу не достигла 475. DQN с seed 105 достиг 500 на 10 000 шагах и завершил обучение с валидационным возвратом 122,9.''')
+    block('''При подборе A3C на 100 000 шагах дал 500 жадно и 96,8 стохастически. Noisy-PPO с общей сетью и факторизованным шумом на 300 000 шагах дал 297,0 и 425,8. A3C и PPO подбирались по стохастической оценке.''')
+    block('''Подтверждающая серия использует seed обучения 400–409. Валидация проводится на 10 стартах с 75 000, итоговая оценка – на 30 с 85 000. Порог 475 применяется к среднему возврату последней модели.''')
+    dqn_config = next(row['config'] for row in cartpole_new if row['condition'] == 'dqn')
+    a3c_config = next(row['config'] for row in cartpole_new if row['condition'] == 'a3c')
+    ppo_config = next(row['config'] for row in cartpole_new if row['condition'] == 'ppo')
+    def step_text(value):
+        return f'{int(value):,}'.replace(',', '\u00a0')
+    block(f'''DQN и Noisy-DQN обучаются с наградой Sutton–Barto [6], равной −1 при истинном завершении и 0 иначе. Бюджет {step_text(dqn_config["steps"])} шагов. Начальный шаг Adam {f(dqn_config["learning_rate"], 4)} линейно снижается, целевая сеть обновляется с τ = {f(dqn_config["target_tau"], 3)}. В Noisy-DQN σ обучаются, ε-жадный выбор отключен.''')
+    block(f'''Бюджет A3C составляет {step_text(a3c_config["steps"])} переходов. Шаг Adam снижается каждые 50 000 шагов от {f(a3c_config["learning_rate"], 3)} до 0,0003 на последнем интервале. Четыре асинхронных сборщика используют траектории до 20 шагов.''')
+    block(f'''PPO обучается на {step_text(ppo_config["steps"])} переходах с раздельными сетями и ортогональной инициализацией. Шаг Adam снижается от {f(ppo_config["learning_rate"], 3)}, rollout до {ppo_config["ppo_rollout"]} шагов используется в {ppo_config["ppo_epochs"]} эпохах. Энтропийный бонус равен нулю. У Noisy-PPO σ₀ = {f(ppo_config["sigma0"], 2)} и шум фиксирован до конца оптимизации rollout.''')
+    block(f'''Выполнены 80 обучений за {cartpole_steps_text} переходов. Оценка использует +1 за шаг и лимит 500. Измененные настройки проверялись совместно.''')
+    heading('8.2 Итоговая оценка', 2, True)
+    main_rows, extra_rows = [], []
+    mode_names = {'resampled_noise': 'Шум включён', 'mean_greedy': 'Argmax по μ', 'mean_sampled': 'Sampling по μ'}
+    for row in cartpole_new:
+        mode = row['primary_mode']
+        score, original = row['modes'][mode], cartpole_old[row['model']]['modes'][mode]
+        first = row['median_first_step']
+        main_rows.append([row['model'], f"{f(original['mean'])}", f"{f(score['mean'])} ± {f(score['sd'])}",
+                          f"{score['solved']} из 10", step_text(first) if first is not None else '–'])
+        for key, value in row['modes'].items():
+            if key != mode and key != 'mean_sampled':
+                extra_rows.append([row['model'], mode_names[key], f"{f(value['mean'])} ± {f(value['sd'])}",
+                                   f"{value['solved']} из 10"])
+    table('CartPole в исходной и повторной сериях',
+          ['Модель', 'Исходное среднее', 'Повтор, среднее ± SD', 'Итог ≥ 475', 'Медиана первого шага'],
+          main_rows, [4.65, 2.55, 4.1, 2.35, 3.35], keep_together=True)
+    block(f'''В основном режиме порог на отложенных эпизодах достигнут у {cartpole_passed} из 80 моделей. Медиана первого шага рассчитана по тем запускам, которые достигли порога на валидации. Их число, нормированная AUC и результаты по seed приведены в ноутбуке. SD отражает различия между десятью средними возвратами моделей.''')
+    table('Дополнительные режимы оценки на CartPole',
+          ['Модель', 'Режим', 'Среднее ± SD', 'Итог ≥ 475'], extra_rows,
+          [5.05, 3.15, 5.35, 3.45], keep_together=True)
+    block('''Таблицы описывают разные правила выбора действия. Для шумовых A3C и PPO оценка argmax отключает и параметрический шум, и выбор действия из распределения. Возвраты при выборке действий по средним весам приведены отдельно в ноутбуке.''')
+    heading('8.3 Скорость и стабильность', 2, True)
+    figure('learning.png', 'Валидационные кривые повторной серии CartPole', 'results/cartpole_analysis')
+    block('''Линии на рисунке 12 показывают среднее десяти обучений. Заливка соответствует одному выборочному стандартному отклонению. У DQN оценка строится по средним весам, у A3C и PPO – по стохастической политике. Скорость сопоставляется внутри каждого семейства. Первое достижение порога фиксируется с точностью до интервала оценивания и может предшествовать снижению качества на последующих оценках.''')
+    heading('8.4 Остановка по валидации', 2, True)
+    block('''Два запуска, DQN с seed 401 и Noisy-DQN с seed 408, несколько раз достигли 500 на валидации и потеряли качество к концу. Для проверки правила остановки проведена отдельная серия на seed 410–419. Обучение заканчивается после двух последовательных контрольных оценок со средним возвратом не ниже 475 или при достижении 160 000 шагов. Noisy-DQN должен выполнить условие в обоих режимах.''')
+    block('''Для решения об остановке использованы старты 76 050–76 059. Сохраненные модели оценены на 30 новых стартах 86 000–86 029. Чекпойнт выбирается только по валидации. В таблице учтены все двадцать моделей.''')
+    stop_rows = []
+    for condition, label in [(stop_dqn, 'DQN'), (stop_noisy, 'Noisy-DQN')]:
+        for mode, score in condition['modes'].items():
+            stop_rows.append([label, 'Средние веса' if mode == 'mean_weights' else 'Шум включён',
+                              f"{f(score['mean'])} ± {f(score['sample_sd'])}",
+                              f"{score['models_ge475']} из 10", step_text(condition['actual_steps']['median'])])
+    table('Отложенная оценка при остановке по валидации',
+          ['Модель', 'Режим', 'Среднее ± SD', 'Итог ≥ 475', 'Медиана шагов'],
+          stop_rows, [2.7, 3.4, 4.4, 2.9, 3.6], keep_together=True)
+    block(f'''Обучение потребовало {stopping_steps} переходов при суммарном пределе 3 200 000. Повторные {stopping['exact_checkpoint_verification']['episodes']} оценочных эпизодов по сохраненным моделям совпали с журналами. Для DQN средний возврат составил {f(stop_dqn_mean)}. Фактический бюджет каждого запуска определяется валидацией.''')
     heading('ЗАКЛЮЧЕНИЕ', 0, True)
-    block('''Реализованы и объяснены DQN, A3C, PPO и шумовые варианты Noisy-DQN, Noisy-A3C, Noisy-PPO. Рассмотрены независимый и факторизованный шум, отказ от ε-жадного выбора в Noisy-DQN и удаление entropy bonus в шумовых actor-critic. Ключевые компоненты проверены 26 тестами.
+    block('''Реализованы и объяснены DQN, A3C, PPO и шумовые варианты Noisy-DQN, Noisy-A3C, Noisy-PPO. Рассмотрены независимый и факторизованный шум, отказ от ε-жадного выбора в Noisy-DQN и роль энтропийного бонуса в actor-critic. Ключевые компоненты проверены автоматическими тестами.
 
-На двух средах выполнены 200 обучений: 80 в серии DQN и 120 в серии A3C/PPO. Общий бюджет составил 26 млн переходов, без пилота и оценочных эпизодов. В каждом условии сохранены десять seed и последние модели, оцененные на 30 отложенных стартах.''')
+На двух средах в исходных сериях выполнены 200 обучений с бюджетом 26 млн переходов. В каждом условии сохранены десять seed и последние модели, оцененные на 30 отложенных стартах.''')
     block(f'''В серии DQN гипотеза об улучшении итогового возврата и AUC в режиме по μ не подтверждена. На Acrobot включенный шум дает {f(ac_n['stochastic_mean'])} ± {f(ac_n['stochastic_seed_sd'])} вместо {pm(ac_n)} по μ. Отключение шума существенно меняет качество политики; низкий результат по μ не означает отсутствия обученного поведения.
 
 Исследованы σ₀, обучение σ и частота поведенческого шума. Абляции показывают чувствительность реализации; их интервалы описательные. Динамика σ не измеряет непосредственно качество исследования среды.
 
 В серии A3C/PPO проверены оба генератора и показана фактическая динамика σ. A3C использует конкурентные actor-learner; Noisy-PPO сохраняет ε при вычислении условного отношения вероятностей. Скорость и стабильность описаны через AUC, достижение заданного порога, SD между seed и колебания последних оценок.''')
-    block(f"PPO и Noisy-PPO с факторизованным шумом получили {pm(pol['cartpole','ppo'])} и {pm(pol['cartpole','noisy_ppo_factorized'])} на CartPole; {pm(pol['acrobot','ppo'])} и {pm(pol['acrobot','noisy_ppo_factorized'])} на Acrobot. При данном бюджете A3C не достиг принятых порогов. Полные сравнения генераторов приведены в главе 6.")
-    block('''Выполненные ноутбуки проверяют 200 моделей и 13 800 итоговых эпизодов. Исходные журналы позволяют пересчитать результаты. Выводы ограничены двумя средами, выбранными бюджетами и режимами оценки; общего превосходства NoisyNets не устанавливается.''')
+    block(f'На Acrobot PPO и Noisy-PPO с факторизованным шумом получили {pm(pol["acrobot","ppo"])} и {pm(pol["acrobot","noisy_ppo_factorized"])}. В повторной серии на CartPole порог 475 достигнут у {cartpole_passed} из 80 итоговых моделей в основном режиме. При остановке по валидации на новых стартах DQN получил средний возврат {f(stop_dqn_mean)}.')
+    block('''Чекпойнты, отложенные эпизоды и ноутбуки позволяют пересчитать результаты исходных и повторной серий. Выводы относятся к двум средам, выбранным бюджетам и режимам оценки. Для сравнения генераторов важны результаты каждого режима и разброс между запусками.''')
     heading('СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ', 0, True)
     source_refs = []
     in_refs = False
@@ -618,14 +681,17 @@ NoisyLinear требует хранения μ, σ и буферов шума. �
         para.paragraph_format.first_line_indent = Cm(-0.75); para.paragraph_format.left_indent = Cm(1.25)
     heading('ПРИЛОЖЕНИЕ А', 0, True)
     heading('Воспроизведение и исходные результаты', 0, False, False)
-    block('''Для анализа нужно клонировать репозиторий и установить зависимости. Модуль final_analysis обрабатывает DQN, policy_analysis – A3C/PPO. Ноутбук 03_all_models.ipynb содержит все модели индивидуального задания; подробности DQN сохранены также в 02_final_study.ipynb. Рекомендуется Python 3.12, точные версии находятся в requirements-lock.txt.''')
+    block('''Для анализа нужно клонировать репозиторий и установить зависимости. Ноутбук 04_cartpole.ipynb посвящен повторной серии. Исходные серии представлены в 02_final_study.ipynb и 03_all_models.ipynb. Рекомендуется Python 3.12, точные версии находятся в requirements-lock.txt.''')
     for command in [
         'git clone https://github.com/hixday28/noisynets-rl.git',
         'cd noisynets-rl', 'python3.12 -m venv .venv', 'source .venv/bin/activate',
         'python -m pip install -r requirements-lock.txt', 'python -m pip install --no-deps -e .',
         'python -m pytest -q', 'python -m noisynets.final_analysis',
         'python -m noisynets.policy_analysis',
-        'python scripts/execute_notebook.py notebooks/03_all_models.ipynb']:
+        'python scripts/analyze_cartpole.py',
+        'python scripts/verify_cartpole.py --workers 2',
+        'python scripts/analyze_cartpole_stopping.py --verify',
+        'python scripts/execute_notebook.py notebooks/04_cartpole.ipynb']:
         para = p(command); para.paragraph_format.first_line_indent = Cm(0)
         para.paragraph_format.space_after = Pt(0)
     block('''Для нового обучения задается отдельный каталог. При четырех параллельных процессах каждый использует один поток PyTorch. Опубликованные результаты не перезаписываются:''')
@@ -633,9 +699,9 @@ NoisyLinear требует хранения μ, σ и буферов шума. �
     para.paragraph_format.first_line_indent = Cm(0)
     para = p('python scripts/run_policy_study.py --workers 2 --out results/reproduced-policy')
     para.paragraph_format.first_line_indent = Cm(0)
-    block('''Манифест DQN – configs/final_study.json, actor-critic – configs/policy_study.json. Результаты находятся в results/final и results/policy. Исходники DQN зафиксированы commit 12cfbac, A3C/PPO – 041466b. Полные идентификаторы, версии и SHA-256 сохранены в metadata.json каждого запуска. Обучение A3C зависит от порядка потоков, тогда как оценки сохраненных моделей проверяются точно.''')
+    block('''Манифесты исходных серий: configs/final_study.json и configs/policy_study.json. Манифесты повторной серии находятся в configs/cartpole_*. Сохраненные модели, параметры запуска и журналы находятся в results/cartpole_*_final. Команды повторного обучения приведены в README репозитория. Порядок асинхронных обновлений A3C зависит от планировщика потоков.''')
     for ek, env in [('cartpole', 'CartPole'), ('acrobot', 'Acrobot')]:
-        table('Средние отложенные возвраты по seed ' + env,
+        table('Отложенные возвраты по seed ' + env + ' в исходной серии',
               ['Seed', 'DQN', 'NoisyNet', 'NoisyNet с шумом'], [
                   [str(seed)] + [f(next(r for r in runs if r['environment'] == ek and r['condition'] == ck and int(r['seed']) == seed)[metric])
                                  for ck, metric in [('dqn', 'final_mean'), ('noisy', 'final_mean'), ('noisy', 'stochastic_mean')]]
@@ -644,12 +710,12 @@ NoisyLinear требует хранения μ, σ и буферов шума. �
         ['config.json', 'Полные параметры запуска'],
         ['metadata.json', 'Версии, commit, SHA-256, число обновлений'],
         ['episodes.csv / updates.csv', 'Эпизоды обучения и диагностика loss'],
-        ['evaluations.csv', 'Начальная и 10 промежуточных оценок, σ'],
+        ['evaluations.csv', 'Начальная и контрольные оценки, σ'],
         ['final_returns.json', 'Награды всех отложенных эпизодов'],
         ['final_episode_details.json', 'Seed, длины, terminated и truncated'],
         ['model.pt / COMPLETE', 'Веса последней модели / маркер завершения']], [7.2, 9.8])
     end = OxmlElement('w:bookmarkEnd'); end.set(qn('w:id'), '999'); doc.paragraphs[-1]._p.append(end)
-    assert figure_count == 11 and table_count == 15
+    assert figure_count == 12 and table_count == 18
 
     previous = toc_anchor
     for index, (text, level, name) in enumerate(toc):

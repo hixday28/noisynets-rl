@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "seeds": [
+    400,
+    401,
+    402,
+    403,
+    404,
+    405,
+    406,
+    407,
+    408,
+    409
+  ],
+  "tuning_seeds": [
+    300,
+    301,
+    302,
+    303
+  ],
+  "primary_evaluation": "behaviour",
+  "additional_evaluation": [
+    "mean_greedy",
+    "mean_sampled"
+  ],
+  "bootstrap_seed": 7241,
+  "bootstrap_resamples": 20000,
+  "optimization_schedule": {
+    "anneal_lr": true,
+    "initial_learning_rate": 0.003,
+    "minimum_fraction": 0.05,
+    "formula": "lr = initial_lr * max(0.05, 1-step/budget)",
+    "update_cadence": "после барьера оценивания каждые 50 000 переходов; для последующего интервала"
+  },
+  "environments": [
+    {
+      "key": "cartpole",
+      "config": {
+        "env": "CartPole-v1",
+        "steps": 500000,
+        "hidden": 64,
+        "learning_rate": 0.003,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "sigma0": 0.1,
+        "generation": "independent",
+        "workers": 4,
+        "a3c_rollout": 20,
+        "ppo_rollout": 128,
+        "ppo_epochs": 4,
+        "minibatch": 64,
+        "clip": 0.2,
+        "entropy_coef": 0.001,
+        "value_coef": 0.5,
+        "gradient_clip": 40.0,
+        "eval_interval": 50000,
+        "eval_episodes": 10,
+        "final_episodes": 30,
+        "eval_seed": 75000,
+        "final_seed": 85000,
+        "algorithm": "a3c"
+      },
+      "conditions": [
+        {
+          "key": "a3c",
+          "algorithm": "a3c",
+          "generation": "independent",
+          "entropy_coef": 0.001
+        },
+        {
+          "key": "noisy_a3c_independent",
+          "algorithm": "noisy-a3c",
+          "generation": "independent",
+          "entropy_coef": 0.0
+        },
+        {
+          "key": "noisy_a3c_factorized",
+          "algorithm": "noisy-a3c",
+          "generation": "factorized",
+          "entropy_coef": 0.0
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Манифест фиксируется до запусков seed400–409; tuning находится в results/cartpole_a3c_tuning.",
+    "Действия при обучении и в основном режиме оценки выбираются из categorical; greedy используется только как отдельная дополнительная оценка.",
+    "Четыре независимых асинхронных actor-learner; общий Adam обновляется под lock, rollout и backward параллельны.",
+    "Шум фиксирован внутри rollout до20шагов; в noisy entropy bonus выключен; σ обучается.",
+    "Последний чекпойнт после500k используется независимо от промежуточной награды; финальные эпизоды не используются для подбора.",
+    "Порядок потоков A3C не детерминирован побитово даже при том же seed."
+  ]
+}

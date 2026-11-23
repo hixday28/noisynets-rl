@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "seeds": [
+    300,
+    301,
+    302
+  ],
+  "selection": "Число средних возвратов ≥ 475, затем среднее значение на отдельной оценке настройки. Для шумовой модели учитываются оба режима.",
+  "environments": [
+    {
+      "key": "cartpole",
+      "config": {
+        "env": "CartPole-v1",
+        "steps": 120000,
+        "hidden": 64,
+        "learning_rate": 0.0003,
+        "gamma": 0.99,
+        "batch_size": 64,
+        "replay_capacity": 30000,
+        "learning_starts": 500,
+        "train_frequency": 2,
+        "target_interval": 400,
+        "epsilon_start": 1.0,
+        "epsilon_end": 0.05,
+        "epsilon_decay_steps": 6000,
+        "sigma0": 0.5,
+        "eval_interval": 10000,
+        "eval_episodes": 10,
+        "final_episodes": 12,
+        "eval_seed": 75000,
+        "final_seed": 76000,
+        "gradient_clip": 10.0,
+        "noise_cadence": "action"
+      },
+      "conditions": [
+        {
+          "key": "failure_penalty_dqn",
+          "algorithm": "dqn",
+          "gamma": 0.99,
+          "learning_rate": 0.0003,
+          "target_tau": 0.01,
+          "sigma0": 0.08,
+          "sutton_barto_reward": true,
+          "learning_rate_end_fraction": 0.15
+        },
+        {
+          "key": "failure_penalty_noisy",
+          "algorithm": "noisy",
+          "gamma": 0.99,
+          "learning_rate": 0.0003,
+          "target_tau": 0.01,
+          "sigma0": 0.08,
+          "sutton_barto_reward": true,
+          "learning_rate_end_fraction": 0.15
+        }
+      ]
+    }
+  ]
+}

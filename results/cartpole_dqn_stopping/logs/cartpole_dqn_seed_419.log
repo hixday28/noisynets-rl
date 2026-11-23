@@ -1,0 +1,7 @@
+dqn seed=419 step=0: 9.2
+dqn seed=419 step=10000: 173.6
+dqn seed=419 step=20000: 298.2
+dqn seed=419 step=30000: 500.0
+dqn seed=419 step=40000: 467.5
+dqn seed=419 step=50000: 500.0
+dqn seed=419 step=60000: 500.0

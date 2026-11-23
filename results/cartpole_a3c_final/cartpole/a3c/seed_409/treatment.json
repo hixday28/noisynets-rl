@@ -1,0 +1,4 @@
+{
+  "anneal_lr": true,
+  "schedule": "lr = initial_lr * max(0.05, 1 - step / budget); changes after evaluation barriers"
+}

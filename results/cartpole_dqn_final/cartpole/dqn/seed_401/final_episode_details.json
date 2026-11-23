@@ -1,0 +1,214 @@
+{
+  "mean_weights": [
+    {
+      "seed": 85000,
+      "return": 133.0,
+      "length": 133,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85001,
+      "return": 127.0,
+      "length": 127,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85002,
+      "return": 136.0,
+      "length": 136,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85003,
+      "return": 127.0,
+      "length": 127,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85004,
+      "return": 129.0,
+      "length": 129,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85005,
+      "return": 126.0,
+      "length": 126,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85006,
+      "return": 147.0,
+      "length": 147,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85007,
+      "return": 128.0,
+      "length": 128,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85008,
+      "return": 124.0,
+      "length": 124,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85009,
+      "return": 123.0,
+      "length": 123,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85010,
+      "return": 129.0,
+      "length": 129,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85011,
+      "return": 134.0,
+      "length": 134,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85012,
+      "return": 125.0,
+      "length": 125,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85013,
+      "return": 146.0,
+      "length": 146,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85014,
+      "return": 115.0,
+      "length": 115,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85015,
+      "return": 131.0,
+      "length": 131,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85016,
+      "return": 125.0,
+      "length": 125,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85017,
+      "return": 126.0,
+      "length": 126,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85018,
+      "return": 121.0,
+      "length": 121,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85019,
+      "return": 127.0,
+      "length": 127,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85020,
+      "return": 125.0,
+      "length": 125,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85021,
+      "return": 128.0,
+      "length": 128,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85022,
+      "return": 130.0,
+      "length": 130,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85023,
+      "return": 144.0,
+      "length": 144,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85024,
+      "return": 133.0,
+      "length": 133,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85025,
+      "return": 130.0,
+      "length": 130,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85026,
+      "return": 131.0,
+      "length": 131,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85027,
+      "return": 184.0,
+      "length": 184,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85028,
+      "return": 141.0,
+      "length": 141,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "seed": 85029,
+      "return": 127.0,
+      "length": 127,
+      "terminated": true,
+      "truncated": false
+    }
+  ]
+}

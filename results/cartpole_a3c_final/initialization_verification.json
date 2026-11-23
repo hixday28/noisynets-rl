@@ -1,0 +1,106 @@
+{
+  "all_match": true,
+  "n_comparisons": 20,
+  "rows": [
+    {
+      "seed": 400,
+      "generation": "independent",
+      "initial_mean_parameters_match_baseline": true
+    },
+    {
+      "seed": 400,
+      "generation": "factorized",
+      "initial_mean_parameters_match_baseline": true
+    },
+    {
+      "seed": 401,
+      "generation": "independent",
+      "initial_mean_parameters_match_baseline": true
+    },
+    {
+      "seed": 401,
+      "generation": "factorized",
+      "initial_mean_parameters_match_baseline": true
+    },
+    {
+      "seed": 402,
+      "generation": "independent",
+      "initial_mean_parameters_match_baseline": true
+    },
+    {
+      "seed": 402,
+      "generation": "factorized",
+      "initial_mean_parameters_match_baseline": true
+    },
+    {
+      "seed": 403,
+      "generation": "independent",
+      "initial_mean_parameters_match_baseline": true
+    },
+    {
+      "seed": 403,
+      "generation": "factorized",
+      "initial_mean_parameters_match_baseline": true
+    },
+    {
+      "seed": 404,
+      "generation": "independent",
+      "initial_mean_parameters_match_baseline": true
+    },
+    {
+      "seed": 404,
+      "generation": "factorized",
+      "initial_mean_parameters_match_baseline": true
+    },
+    {
+      "seed": 405,
+      "generation": "independent",
+      "initial_mean_parameters_match_baseline": true
+    },
+    {
+      "seed": 405,
+      "generation": "factorized",
+      "initial_mean_parameters_match_baseline": true
+    },
+    {
+      "seed": 406,
+      "generation": "independent",
+      "initial_mean_parameters_match_baseline": true
+    },
+    {
+      "seed": 406,
+      "generation": "factorized",
+      "initial_mean_parameters_match_baseline": true
+    },
+    {
+      "seed": 407,
+      "generation": "independent",
+      "initial_mean_parameters_match_baseline": true
+    },
+    {
+      "seed": 407,
+      "generation": "factorized",
+      "initial_mean_parameters_match_baseline": true
+    },
+    {
+      "seed": 408,
+      "generation": "independent",
+      "initial_mean_parameters_match_baseline": true
+    },
+    {
+      "seed": 408,
+      "generation": "factorized",
+      "initial_mean_parameters_match_baseline": true
+    },
+    {
+      "seed": 409,
+      "generation": "independent",
+      "initial_mean_parameters_match_baseline": true
+    },
+    {
+      "seed": 409,
+      "generation": "factorized",
+      "initial_mean_parameters_match_baseline": true
+    }
+  ]
+}

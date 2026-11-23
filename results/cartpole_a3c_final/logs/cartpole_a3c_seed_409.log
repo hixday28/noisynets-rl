@@ -1,0 +1,11 @@
+a3c independent seed=409 step=0 behaviour=19.90 greedy=9.50 mean_sampled=19.90
+a3c independent seed=409 step=50000 behaviour=276.60 greedy=500.00 mean_sampled=276.60
+a3c independent seed=409 step=100000 behaviour=302.80 greedy=500.00 mean_sampled=302.80
+a3c independent seed=409 step=150000 behaviour=268.80 greedy=500.00 mean_sampled=268.80
+a3c independent seed=409 step=200000 behaviour=422.20 greedy=500.00 mean_sampled=422.20
+a3c independent seed=409 step=250000 behaviour=500.00 greedy=500.00 mean_sampled=500.00
+a3c independent seed=409 step=300000 behaviour=500.00 greedy=500.00 mean_sampled=500.00
+a3c independent seed=409 step=350000 behaviour=500.00 greedy=500.00 mean_sampled=500.00
+a3c independent seed=409 step=400000 behaviour=500.00 greedy=500.00 mean_sampled=500.00
+a3c independent seed=409 step=450000 behaviour=500.00 greedy=500.00 mean_sampled=500.00
+a3c independent seed=409 step=500000 behaviour=500.00 greedy=500.00 mean_sampled=500.00

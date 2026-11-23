@@ -1,0 +1,7 @@
+noisy-ppo factorized seed=300 step=0: 26.00
+noisy-ppo factorized seed=300 step=50000: 408.50
+noisy-ppo factorized seed=300 step=100000: 431.70
+noisy-ppo factorized seed=300 step=150000: 288.70
+noisy-ppo factorized seed=300 step=200000: 204.90
+noisy-ppo factorized seed=300 step=250000: 356.60
+noisy-ppo factorized seed=300 step=300000: 418.30

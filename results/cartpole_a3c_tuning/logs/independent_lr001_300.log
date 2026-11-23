@@ -1,0 +1,5 @@
+noisy-a3c independent seed=300 step=0 behaviour=18.80 greedy=9.50 mean_sampled=19.70
+noisy-a3c independent seed=300 step=25000 behaviour=58.70 greedy=100.60 mean_sampled=43.70
+noisy-a3c independent seed=300 step=50000 behaviour=58.30 greedy=109.70 mean_sampled=60.00
+noisy-a3c independent seed=300 step=75000 behaviour=91.90 greedy=171.10 mean_sampled=93.40
+noisy-a3c independent seed=300 step=100000 behaviour=93.30 greedy=500.00 mean_sampled=97.90

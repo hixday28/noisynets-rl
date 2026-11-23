@@ -1,0 +1,7 @@
+ppo factorized seed=300 step=0: 19.70
+ppo factorized seed=300 step=50000: 230.70
+ppo factorized seed=300 step=100000: 164.20
+ppo factorized seed=300 step=150000: 332.40
+ppo factorized seed=300 step=200000: 452.40
+ppo factorized seed=300 step=250000: 500.00
+ppo factorized seed=300 step=300000: 463.40

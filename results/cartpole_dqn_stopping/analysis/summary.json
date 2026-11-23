@@ -1,0 +1,78 @@
+{
+  "study": "prospective_validation_stopping",
+  "n_training_runs": 20,
+  "requested_step_cap_per_run": 160000,
+  "total_training_steps": 1490000,
+  "maximum_training_steps": 3200000,
+  "steps_saved_relative_to_all_caps": 1710000,
+  "conditions": [
+    {
+      "condition": "dqn",
+      "n_training_seeds": 10,
+      "actual_steps": {
+        "mean": 73000.0,
+        "sample_sd": 13374.935098492586,
+        "median": 70000.0,
+        "minimum": 60000.0,
+        "maximum": 100000.0
+      },
+      "total_training_steps": 730000,
+      "validation_stops": 10,
+      "stopped_before_cap": 10,
+      "cap_exhausted": 0,
+      "heldout_all_modes_ge475": 10,
+      "modes": {
+        "mean_weights": {
+          "mean": 498.7466666666667,
+          "sample_sd": 3.9633880007443776,
+          "median": 500.0,
+          "minimum": 487.46666666666664,
+          "maximum": 500.0,
+          "models_ge475": 10
+        }
+      }
+    },
+    {
+      "condition": "noisy",
+      "n_training_seeds": 10,
+      "actual_steps": {
+        "mean": 76000.0,
+        "sample_sd": 23664.319132398465,
+        "median": 75000.0,
+        "minimum": 40000.0,
+        "maximum": 120000.0
+      },
+      "total_training_steps": 760000,
+      "validation_stops": 10,
+      "stopped_before_cap": 10,
+      "cap_exhausted": 0,
+      "heldout_all_modes_ge475": 10,
+      "modes": {
+        "mean_weights": {
+          "mean": 499.82666666666665,
+          "sample_sd": 0.548128127762524,
+          "median": 500.0,
+          "minimum": 498.26666666666665,
+          "maximum": 500.0,
+          "models_ge475": 10
+        },
+        "resampled_noise": {
+          "mean": 499.2033333333334,
+          "sample_sd": 1.8074229659318135,
+          "median": 500.0,
+          "minimum": 494.6,
+          "maximum": 500.0,
+          "models_ge475": 10
+        }
+      }
+    }
+  ],
+  "frozen_manifest_sha256": "19f08dc4414cb2ebb000ddaedcc2c3e85dd1209a6cd3415d4b9cb5124664bb81",
+  "exact_checkpoint_verification": {
+    "performed": true,
+    "model_modes": 30,
+    "episodes": 900,
+    "all_match": true
+  },
+  "interpretation": "Отдельный протокол с выбором времени остановки по validation; fixed-budget серия сохранена отдельно"
+}

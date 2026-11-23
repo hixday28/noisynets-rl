@@ -1,0 +1,7 @@
+ppo factorized seed=301 step=0: 23.00
+ppo factorized seed=301 step=50000: 500.00
+ppo factorized seed=301 step=100000: 500.00
+ppo factorized seed=301 step=150000: 500.00
+ppo factorized seed=301 step=200000: 500.00
+ppo factorized seed=301 step=250000: 500.00
+ppo factorized seed=301 step=300000: 500.00

@@ -1,0 +1,31 @@
+{
+  "started_utc": "2026-11-23T07:00:25.654463+00:00",
+  "git_commit": "0d69b973132bb1fda5702de2a49bcdccfc42ff03",
+  "seed": 300,
+  "device": "cpu",
+  "torch_threads": 1,
+  "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+  "versions": {
+    "torch": "2.15.0",
+    "gymnasium": "1.4.0",
+    "numpy": "2.5.4"
+  },
+  "training_source_sha256": {
+    "src/noisynets/actorcritic.py": "ee8204ba5e2c917a3bfba62c714019d0ab380bbec939d93c325a4cd692be1344",
+    "src/noisynets/policy_networks.py": "c811d78eb99ecbafe89eea266c15f05b4a0a0c1a288e5bae873bad26eaa83cfc",
+    "src/noisynets/networks.py": "e1a6db618df465f516007374f5f838f1918a9ad4c1a3e71ad230d551a7603c6d",
+    "scripts/cartpole_a3c_study.py": "22a3dc940dcdbd4506f8b6d45c059b83aedec6b2bbadd46884500942ccc653ff"
+  },
+  "trainable_parameters": 4675,
+  "async_reproducibility": "Thread scheduling is asynchronous and not bitwise deterministic",
+  "primary_evaluation": "behaviour: categorical sampling; rollout-held noise for noisy models",
+  "optimizer": "Adam",
+  "anneal_lr": false,
+  "actor_workers": 4,
+  "actor_learner_type": "asynchronous_threads",
+  "gradient_updates": 5709,
+  "max_staleness": 30,
+  "stale_gradient_updates": 5460,
+  "elapsed_seconds": 27.32569287499973,
+  "completed_utc": "2026-11-23T07:00:53.015104+00:00"
+}

@@ -1,0 +1,22 @@
+{
+  "started_utc": "2026-11-23T07:34:30.337005+00:00",
+  "families": [
+    "ppo"
+  ],
+  "expected_models": 30,
+  "completed_models": 30,
+  "pending": [],
+  "workers": 1,
+  "torch_threads_per_process": 1,
+  "evaluation_seed_start": 85000,
+  "episodes_per_mode": 30,
+  "exact_episode_details": true,
+  "completed_utc": "2026-11-23T07:35:34.402075+00:00",
+  "verification_started": true,
+  "verified_models": 30,
+  "verified_model_modes": 80,
+  "verified_episodes": 2400,
+  "failed_models": 0,
+  "failures": [],
+  "all_verified": true
+}

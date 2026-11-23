@@ -51,6 +51,8 @@ class Config:
     target_tau: float | None = None
     sutton_barto_reward: bool = False
     learning_rate_end_fraction: float = 1.0
+    early_stopping_patience: int = 0
+    early_stopping_threshold: float = 475.0
 
     def validate(self):
         if self.algorithm not in {"dqn", "noisy", "noisy-fixed"}:
@@ -74,6 +76,12 @@ class Config:
             raise ValueError("The Sutton–Barto reward is supported for CartPole-v1")
         if not 0 < self.learning_rate_end_fraction <= 1:
             raise ValueError("learning_rate_end_fraction must lie in (0, 1]")
+        if type(self.early_stopping_patience) is not int or self.early_stopping_patience < 0:
+            raise ValueError("early_stopping_patience must be a nonnegative integer")
+        if not 0 < self.early_stopping_threshold <= 500:
+            raise ValueError("early_stopping_threshold must lie in (0, 500]")
+        if self.early_stopping_patience and self.env != "CartPole-v1":
+            raise ValueError("Early stopping is supported only for CartPole-v1")
 
 
 def epsilon_at(step: int, c: Config) -> float:
@@ -170,15 +178,25 @@ def run(c: Config, out: Path):
     (out / "metadata.json").write_text(json.dumps(metadata, indent=2) + "\n")
     history, episodes, updates = [], [], []
     episode_return, episode_length, episode_id, update_id = 0.0, 0, 0, 0
+    consecutive_passes = 0
+    stop_reason = "budget_exhausted"
     started = time.perf_counter()
     def checkpoint_eval(step):
         scores = evaluate(online, c.env, c.eval_episodes, c.eval_seed)
         row = {"step": step, "return_mean": float(np.mean(scores)),
                "return_std": float(np.std(scores, ddof=1)) if len(scores)>1 else 0.0,
                "epsilon": epsilon_at(step, c) if not noisy else 0.0, **online.sigma_stats()}
+        if c.early_stopping_patience and noisy:
+            stochastic_scores = evaluate(online, c.env, c.eval_episodes, c.eval_seed, stochastic=True)
+            row["stochastic_return_mean"] = float(np.mean(stochastic_scores))
+            row["stochastic_return_std"] = (float(np.std(stochastic_scores, ddof=1))
+                                            if len(stochastic_scores) > 1 else 0.0)
         history.append(row)
         write_csv(out / "evaluations.csv", history)
         print(f"{c.algorithm} seed={c.seed} step={step}: {row['return_mean']:.1f}", flush=True)
+        return row["return_mean"] >= c.early_stopping_threshold and (
+            not noisy or not c.early_stopping_patience
+            or row["stochastic_return_mean"] >= c.early_stopping_threshold)
     try:
         checkpoint_eval(0)
         for step in range(1, c.steps + 1):
@@ -234,7 +252,13 @@ def run(c: Config, out: Path):
             if c.target_tau is None and step % c.target_interval == 0:
                 target.load_state_dict(online.state_dict())
             if step % c.eval_interval == 0 or step == c.steps:
-                checkpoint_eval(step)
+                passed = checkpoint_eval(step)
+                if c.early_stopping_patience:
+                    consecutive_passes = consecutive_passes + 1 if passed else 0
+                    if consecutive_passes >= c.early_stopping_patience:
+                        stop_reason = "validation_threshold"
+                        break
+        actual_steps = step
         final_details = {"mean_weights": evaluate_details(online, c.env, c.final_episodes, c.final_seed)}
         final_scores = [row["return"] for row in final_details["mean_weights"]]
         final = {"mean_weights": final_scores}
@@ -247,10 +271,21 @@ def run(c: Config, out: Path):
         write_csv(out / "episodes.csv", episodes)
         write_csv(out / "updates.csv", updates)
         torch.save({"model": online.state_dict(), "config": config, "obs_dim": obs_dim,
-                    "n_actions": n_actions, "step": c.steps}, out / "model.pt")
+                    "n_actions": n_actions, "step": actual_steps}, out / "model.pt")
         metadata["elapsed_seconds"] = time.perf_counter() - started
         metadata["completed_utc"] = datetime.now(timezone.utc).isoformat()
         metadata["gradient_updates"] = update_id
+        metadata["actual_steps"] = actual_steps
+        metadata["requested_steps"] = c.steps
+        metadata["stop_reason"] = stop_reason
+        metadata["early_stopping"] = {
+            "patience": c.early_stopping_patience,
+            "threshold": c.early_stopping_threshold,
+            "consecutive_passes": consecutive_passes,
+            "requires_stochastic_validation": bool(noisy and c.early_stopping_patience),
+            "stopped_before_cap": actual_steps < c.steps,
+            "selection_data": "validation starts only; held-out starts evaluated after stopping",
+        }
         (out / "metadata.json").write_text(json.dumps(metadata, indent=2) + "\n")
         (out / "COMPLETE").write_text("success\n")
     finally:

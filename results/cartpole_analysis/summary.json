@@ -1,0 +1,858 @@
+{
+  "threshold": 475,
+  "groups": [
+    {
+      "model": "DQN",
+      "family": "DQN",
+      "condition": "dqn",
+      "updated": false,
+      "primary_mode": "mean_weights",
+      "config": {
+        "env": "CartPole-v1",
+        "algorithm": "dqn",
+        "steps": 100000,
+        "hidden": 64,
+        "gamma": 0.99,
+        "learning_rate": 0.0003,
+        "batch_size": 64,
+        "replay_capacity": 100000,
+        "learning_starts": 2000,
+        "train_frequency": 4,
+        "target_interval": 1000,
+        "epsilon_start": 1.0,
+        "epsilon_end": 0.05,
+        "epsilon_decay_steps": 50000,
+        "sigma0": 0.5,
+        "eval_interval": 10000,
+        "eval_episodes": 10,
+        "final_episodes": 30,
+        "eval_seed": 30000,
+        "final_seed": 40000,
+        "gradient_clip": 10.0,
+        "noise_cadence": "action"
+      },
+      "validation_reached": 1,
+      "median_first_step": 10000.0,
+      "validation_final_reached": 0,
+      "validation_auc": 182.8155,
+      "modes": {
+        "mean_weights": {
+          "mean": 139.88333333333333,
+          "sd": 51.0717414797829,
+          "min": 102.23333333333333,
+          "solved": 0
+        }
+      }
+    },
+    {
+      "model": "DQN",
+      "family": "DQN",
+      "condition": "dqn",
+      "updated": true,
+      "primary_mode": "mean_weights",
+      "config": {
+        "env": "CartPole-v1",
+        "algorithm": "dqn",
+        "steps": 160000,
+        "hidden": 64,
+        "gamma": 0.99,
+        "learning_rate": 0.0005,
+        "batch_size": 64,
+        "replay_capacity": 80000,
+        "learning_starts": 500,
+        "train_frequency": 2,
+        "target_interval": 400,
+        "epsilon_start": 1.0,
+        "epsilon_end": 0.08,
+        "epsilon_decay_steps": 16000,
+        "sigma0": 0.05,
+        "eval_interval": 10000,
+        "eval_episodes": 10,
+        "final_episodes": 30,
+        "eval_seed": 75000,
+        "final_seed": 85000,
+        "gradient_clip": 10.0,
+        "noise_cadence": "action",
+        "target_tau": 0.007,
+        "sutton_barto_reward": true,
+        "learning_rate_end_fraction": 0.05
+      },
+      "validation_reached": 10,
+      "median_first_step": 60000.0,
+      "validation_final_reached": 9,
+      "validation_auc": 371.32625,
+      "modes": {
+        "mean_weights": {
+          "mean": 463.17333333333335,
+          "sd": 116.45614529846753,
+          "min": 131.73333333333332,
+          "solved": 9
+        }
+      }
+    },
+    {
+      "model": "Noisy-DQN",
+      "family": "DQN",
+      "condition": "noisy",
+      "updated": false,
+      "primary_mode": "mean_weights",
+      "config": {
+        "env": "CartPole-v1",
+        "algorithm": "noisy",
+        "steps": 100000,
+        "hidden": 64,
+        "gamma": 0.99,
+        "learning_rate": 0.0003,
+        "batch_size": 64,
+        "replay_capacity": 100000,
+        "learning_starts": 2000,
+        "train_frequency": 4,
+        "target_interval": 1000,
+        "epsilon_start": 1.0,
+        "epsilon_end": 0.05,
+        "epsilon_decay_steps": 50000,
+        "sigma0": 0.5,
+        "eval_interval": 10000,
+        "eval_episodes": 10,
+        "final_episodes": 30,
+        "eval_seed": 30000,
+        "final_seed": 40000,
+        "gradient_clip": 10.0,
+        "noise_cadence": "action"
+      },
+      "validation_reached": 0,
+      "median_first_step": null,
+      "validation_final_reached": 0,
+      "validation_auc": 139.41500000000002,
+      "modes": {
+        "mean_weights": {
+          "mean": 131.13666666666666,
+          "sd": 80.03844670292699,
+          "min": 24.4,
+          "solved": 0
+        },
+        "resampled_noise": {
+          "mean": 129.69666666666666,
+          "sd": 76.417327958688,
+          "min": 27.7,
+          "solved": 0
+        }
+      }
+    },
+    {
+      "model": "Noisy-DQN",
+      "family": "DQN",
+      "condition": "noisy",
+      "updated": true,
+      "primary_mode": "mean_weights",
+      "config": {
+        "env": "CartPole-v1",
+        "algorithm": "noisy",
+        "steps": 160000,
+        "hidden": 64,
+        "gamma": 0.99,
+        "learning_rate": 0.0005,
+        "batch_size": 64,
+        "replay_capacity": 80000,
+        "learning_starts": 500,
+        "train_frequency": 2,
+        "target_interval": 400,
+        "epsilon_start": 1.0,
+        "epsilon_end": 0.08,
+        "epsilon_decay_steps": 16000,
+        "sigma0": 0.05,
+        "eval_interval": 10000,
+        "eval_episodes": 10,
+        "final_episodes": 30,
+        "eval_seed": 75000,
+        "final_seed": 85000,
+        "gradient_clip": 10.0,
+        "noise_cadence": "action",
+        "target_tau": 0.007,
+        "sutton_barto_reward": true,
+        "learning_rate_end_fraction": 0.05
+      },
+      "validation_reached": 10,
+      "median_first_step": 55000.0,
+      "validation_final_reached": 9,
+      "validation_auc": 391.3821875,
+      "modes": {
+        "mean_weights": {
+          "mean": 484.5666666666667,
+          "sd": 48.80448522193199,
+          "min": 345.6666666666667,
+          "solved": 9
+        },
+        "resampled_noise": {
+          "mean": 484.81333333333333,
+          "sd": 48.02445673242379,
+          "min": 348.1333333333333,
+          "solved": 9
+        }
+      }
+    },
+    {
+      "model": "A3C",
+      "family": "A3C",
+      "condition": "a3c",
+      "updated": false,
+      "primary_mode": "behaviour",
+      "config": {
+        "env": "CartPole-v1",
+        "algorithm": "a3c",
+        "steps": 100000,
+        "hidden": 64,
+        "learning_rate": 0.0001,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "sigma0": 0.1,
+        "generation": "independent",
+        "workers": 4,
+        "a3c_rollout": 20,
+        "ppo_rollout": 128,
+        "ppo_epochs": 4,
+        "minibatch": 64,
+        "clip": 0.2,
+        "entropy_coef": 0.01,
+        "value_coef": 0.5,
+        "gradient_clip": 0.5,
+        "eval_interval": 10000,
+        "eval_episodes": 10,
+        "final_episodes": 30,
+        "eval_seed": 55000,
+        "final_seed": 65000
+      },
+      "validation_reached": 0,
+      "median_first_step": null,
+      "validation_final_reached": 0,
+      "validation_auc": 34.661500000000004,
+      "modes": {
+        "behaviour": {
+          "mean": 49.61333333333334,
+          "sd": 8.535260199119103,
+          "min": 39.46666666666667,
+          "solved": 0
+        },
+        "mean_greedy": {
+          "mean": 160.28333333333336,
+          "sd": 129.50732402188163,
+          "min": 63.93333333333333,
+          "solved": 0
+        }
+      }
+    },
+    {
+      "model": "A3C",
+      "family": "A3C",
+      "condition": "a3c",
+      "updated": true,
+      "primary_mode": "behaviour",
+      "config": {
+        "env": "CartPole-v1",
+        "algorithm": "a3c",
+        "steps": 500000,
+        "hidden": 64,
+        "learning_rate": 0.003,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "sigma0": 0.1,
+        "generation": "independent",
+        "workers": 4,
+        "a3c_rollout": 20,
+        "ppo_rollout": 128,
+        "ppo_epochs": 4,
+        "minibatch": 64,
+        "clip": 0.2,
+        "entropy_coef": 0.001,
+        "value_coef": 0.5,
+        "gradient_clip": 40.0,
+        "eval_interval": 50000,
+        "eval_episodes": 10,
+        "final_episodes": 30,
+        "eval_seed": 75000,
+        "final_seed": 85000
+      },
+      "validation_reached": 10,
+      "median_first_step": 150000.0,
+      "validation_final_reached": 10,
+      "validation_auc": 392.35499999999996,
+      "modes": {
+        "behaviour": {
+          "mean": 500.0,
+          "sd": 0.0,
+          "min": 500.0,
+          "solved": 10
+        },
+        "mean_greedy": {
+          "mean": 500.0,
+          "sd": 0.0,
+          "min": 500.0,
+          "solved": 10
+        },
+        "mean_sampled": {
+          "mean": 500.0,
+          "sd": 0.0,
+          "min": 500.0,
+          "solved": 10
+        }
+      }
+    },
+    {
+      "model": "Noisy-A3C, фактор.",
+      "family": "A3C",
+      "condition": "noisy_a3c_factorized",
+      "updated": false,
+      "primary_mode": "behaviour",
+      "config": {
+        "env": "CartPole-v1",
+        "algorithm": "noisy-a3c",
+        "steps": 100000,
+        "hidden": 64,
+        "learning_rate": 0.0001,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "sigma0": 0.1,
+        "generation": "factorized",
+        "workers": 4,
+        "a3c_rollout": 20,
+        "ppo_rollout": 128,
+        "ppo_epochs": 4,
+        "minibatch": 64,
+        "clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "gradient_clip": 0.5,
+        "eval_interval": 10000,
+        "eval_episodes": 10,
+        "final_episodes": 30,
+        "eval_seed": 55000,
+        "final_seed": 65000
+      },
+      "validation_reached": 0,
+      "median_first_step": null,
+      "validation_final_reached": 0,
+      "validation_auc": 38.2525,
+      "modes": {
+        "behaviour": {
+          "mean": 49.166666666666664,
+          "sd": 4.105040563099392,
+          "min": 42.03333333333333,
+          "solved": 0
+        },
+        "mean_greedy": {
+          "mean": 266.84000000000003,
+          "sd": 142.5588938727508,
+          "min": 50.56666666666667,
+          "solved": 0
+        },
+        "mean_sampled": {
+          "mean": 49.82666666666667,
+          "sd": 5.167868438489012,
+          "min": 41.96666666666667,
+          "solved": 0
+        }
+      }
+    },
+    {
+      "model": "Noisy-A3C, фактор.",
+      "family": "A3C",
+      "condition": "noisy_a3c_factorized",
+      "updated": true,
+      "primary_mode": "behaviour",
+      "config": {
+        "env": "CartPole-v1",
+        "algorithm": "noisy-a3c",
+        "steps": 500000,
+        "hidden": 64,
+        "learning_rate": 0.003,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "sigma0": 0.1,
+        "generation": "factorized",
+        "workers": 4,
+        "a3c_rollout": 20,
+        "ppo_rollout": 128,
+        "ppo_epochs": 4,
+        "minibatch": 64,
+        "clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "gradient_clip": 40.0,
+        "eval_interval": 50000,
+        "eval_episodes": 10,
+        "final_episodes": 30,
+        "eval_seed": 75000,
+        "final_seed": 85000
+      },
+      "validation_reached": 10,
+      "median_first_step": 200000.0,
+      "validation_final_reached": 10,
+      "validation_auc": 396.3995,
+      "modes": {
+        "behaviour": {
+          "mean": 497.0966666666667,
+          "sd": 6.139498712797692,
+          "min": 484.46666666666664,
+          "solved": 10
+        },
+        "mean_greedy": {
+          "mean": 500.0,
+          "sd": 0.0,
+          "min": 500.0,
+          "solved": 10
+        },
+        "mean_sampled": {
+          "mean": 500.0,
+          "sd": 0.0,
+          "min": 500.0,
+          "solved": 10
+        }
+      }
+    },
+    {
+      "model": "Noisy-A3C, незав.",
+      "family": "A3C",
+      "condition": "noisy_a3c_independent",
+      "updated": false,
+      "primary_mode": "behaviour",
+      "config": {
+        "env": "CartPole-v1",
+        "algorithm": "noisy-a3c",
+        "steps": 100000,
+        "hidden": 64,
+        "learning_rate": 0.0001,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "sigma0": 0.1,
+        "generation": "independent",
+        "workers": 4,
+        "a3c_rollout": 20,
+        "ppo_rollout": 128,
+        "ppo_epochs": 4,
+        "minibatch": 64,
+        "clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "gradient_clip": 0.5,
+        "eval_interval": 10000,
+        "eval_episodes": 10,
+        "final_episodes": 30,
+        "eval_seed": 55000,
+        "final_seed": 65000
+      },
+      "validation_reached": 0,
+      "median_first_step": null,
+      "validation_final_reached": 0,
+      "validation_auc": 38.364999999999995,
+      "modes": {
+        "behaviour": {
+          "mean": 48.1,
+          "sd": 6.93968725947065,
+          "min": 33.5,
+          "solved": 0
+        },
+        "mean_greedy": {
+          "mean": 198.25333333333336,
+          "sd": 125.44139569171901,
+          "min": 65.66666666666667,
+          "solved": 0
+        },
+        "mean_sampled": {
+          "mean": 52.39333333333333,
+          "sd": 4.324943445002391,
+          "min": 46.8,
+          "solved": 0
+        }
+      }
+    },
+    {
+      "model": "Noisy-A3C, незав.",
+      "family": "A3C",
+      "condition": "noisy_a3c_independent",
+      "updated": true,
+      "primary_mode": "behaviour",
+      "config": {
+        "env": "CartPole-v1",
+        "algorithm": "noisy-a3c",
+        "steps": 500000,
+        "hidden": 64,
+        "learning_rate": 0.003,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "sigma0": 0.1,
+        "generation": "independent",
+        "workers": 4,
+        "a3c_rollout": 20,
+        "ppo_rollout": 128,
+        "ppo_epochs": 4,
+        "minibatch": 64,
+        "clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "gradient_clip": 40.0,
+        "eval_interval": 50000,
+        "eval_episodes": 10,
+        "final_episodes": 30,
+        "eval_seed": 75000,
+        "final_seed": 85000
+      },
+      "validation_reached": 10,
+      "median_first_step": 175000.0,
+      "validation_final_reached": 10,
+      "validation_auc": 411.125,
+      "modes": {
+        "behaviour": {
+          "mean": 498.77666666666664,
+          "sd": 2.7379387578934846,
+          "min": 491.93333333333334,
+          "solved": 10
+        },
+        "mean_greedy": {
+          "mean": 500.0,
+          "sd": 0.0,
+          "min": 500.0,
+          "solved": 10
+        },
+        "mean_sampled": {
+          "mean": 500.0,
+          "sd": 0.0,
+          "min": 500.0,
+          "solved": 10
+        }
+      }
+    },
+    {
+      "model": "PPO",
+      "family": "PPO",
+      "condition": "ppo",
+      "updated": false,
+      "primary_mode": "behaviour",
+      "config": {
+        "env": "CartPole-v1",
+        "algorithm": "ppo",
+        "steps": 100000,
+        "hidden": 64,
+        "learning_rate": 0.0003,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "sigma0": 0.1,
+        "generation": "factorized",
+        "workers": 4,
+        "a3c_rollout": 20,
+        "ppo_rollout": 128,
+        "ppo_epochs": 4,
+        "minibatch": 64,
+        "clip": 0.2,
+        "entropy_coef": 0.01,
+        "value_coef": 0.5,
+        "gradient_clip": 0.5,
+        "eval_interval": 10000,
+        "eval_episodes": 10,
+        "final_episodes": 30,
+        "eval_seed": 55000,
+        "final_seed": 65000
+      },
+      "validation_reached": 0,
+      "median_first_step": null,
+      "validation_final_reached": 0,
+      "validation_auc": 91.291,
+      "modes": {
+        "behaviour": {
+          "mean": 146.06666666666666,
+          "sd": 32.562433858135236,
+          "min": 93.7,
+          "solved": 0
+        },
+        "mean_greedy": {
+          "mean": 227.41666666666669,
+          "sd": 144.14809193120595,
+          "min": 121.4,
+          "solved": 2
+        }
+      }
+    },
+    {
+      "model": "PPO",
+      "family": "PPO",
+      "condition": "ppo",
+      "updated": true,
+      "primary_mode": "behaviour",
+      "config": {
+        "env": "CartPole-v1",
+        "algorithm": "ppo",
+        "steps": 300000,
+        "hidden": 64,
+        "learning_rate": 0.001,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "sigma0": 0.01,
+        "generation": "factorized",
+        "workers": 4,
+        "a3c_rollout": 20,
+        "ppo_rollout": 256,
+        "ppo_epochs": 10,
+        "minibatch": 128,
+        "clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "gradient_clip": 0.5,
+        "eval_interval": 50000,
+        "eval_episodes": 10,
+        "final_episodes": 30,
+        "eval_seed": 75000,
+        "final_seed": 85000,
+        "architecture": "separate_orthogonal",
+        "anneal_learning_rate": true,
+        "adam_epsilon": 1e-05
+      },
+      "validation_reached": 10,
+      "median_first_step": 50000.0,
+      "validation_final_reached": 10,
+      "validation_auc": 460.3066666666667,
+      "modes": {
+        "behaviour": {
+          "mean": 500.0,
+          "sd": 0.0,
+          "min": 500.0,
+          "solved": 10
+        },
+        "mean_greedy": {
+          "mean": 500.0,
+          "sd": 0.0,
+          "min": 500.0,
+          "solved": 10
+        }
+      }
+    },
+    {
+      "model": "Noisy-PPO, фактор.",
+      "family": "PPO",
+      "condition": "noisy_ppo_factorized",
+      "updated": false,
+      "primary_mode": "behaviour",
+      "config": {
+        "env": "CartPole-v1",
+        "algorithm": "noisy-ppo",
+        "steps": 100000,
+        "hidden": 64,
+        "learning_rate": 0.0003,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "sigma0": 0.1,
+        "generation": "factorized",
+        "workers": 4,
+        "a3c_rollout": 20,
+        "ppo_rollout": 128,
+        "ppo_epochs": 4,
+        "minibatch": 64,
+        "clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "gradient_clip": 0.5,
+        "eval_interval": 10000,
+        "eval_episodes": 10,
+        "final_episodes": 30,
+        "eval_seed": 55000,
+        "final_seed": 65000
+      },
+      "validation_reached": 0,
+      "median_first_step": null,
+      "validation_final_reached": 0,
+      "validation_auc": 90.4175,
+      "modes": {
+        "behaviour": {
+          "mean": 107.97666666666666,
+          "sd": 46.48353764081364,
+          "min": 44.63333333333333,
+          "solved": 0
+        },
+        "mean_greedy": {
+          "mean": 237.21666666666664,
+          "sd": 154.32888022533223,
+          "min": 22.366666666666667,
+          "solved": 2
+        },
+        "mean_sampled": {
+          "mean": 107.03333333333333,
+          "sd": 47.11898257091847,
+          "min": 33.2,
+          "solved": 0
+        }
+      }
+    },
+    {
+      "model": "Noisy-PPO, фактор.",
+      "family": "PPO",
+      "condition": "noisy_ppo_factorized",
+      "updated": true,
+      "primary_mode": "behaviour",
+      "config": {
+        "env": "CartPole-v1",
+        "algorithm": "noisy-ppo",
+        "steps": 300000,
+        "hidden": 64,
+        "learning_rate": 0.001,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "sigma0": 0.01,
+        "generation": "factorized",
+        "workers": 4,
+        "a3c_rollout": 20,
+        "ppo_rollout": 256,
+        "ppo_epochs": 10,
+        "minibatch": 128,
+        "clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "gradient_clip": 0.5,
+        "eval_interval": 50000,
+        "eval_episodes": 10,
+        "final_episodes": 30,
+        "eval_seed": 75000,
+        "final_seed": 85000,
+        "architecture": "separate_orthogonal",
+        "anneal_learning_rate": true,
+        "adam_epsilon": 1e-05
+      },
+      "validation_reached": 10,
+      "median_first_step": 50000.0,
+      "validation_final_reached": 10,
+      "validation_auc": 460.4333333333333,
+      "modes": {
+        "behaviour": {
+          "mean": 500.0,
+          "sd": 0.0,
+          "min": 500.0,
+          "solved": 10
+        },
+        "mean_greedy": {
+          "mean": 500.0,
+          "sd": 0.0,
+          "min": 500.0,
+          "solved": 10
+        },
+        "mean_sampled": {
+          "mean": 500.0,
+          "sd": 0.0,
+          "min": 500.0,
+          "solved": 10
+        }
+      }
+    },
+    {
+      "model": "Noisy-PPO, незав.",
+      "family": "PPO",
+      "condition": "noisy_ppo_independent",
+      "updated": false,
+      "primary_mode": "behaviour",
+      "config": {
+        "env": "CartPole-v1",
+        "algorithm": "noisy-ppo",
+        "steps": 100000,
+        "hidden": 64,
+        "learning_rate": 0.0003,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "sigma0": 0.1,
+        "generation": "independent",
+        "workers": 4,
+        "a3c_rollout": 20,
+        "ppo_rollout": 128,
+        "ppo_epochs": 4,
+        "minibatch": 64,
+        "clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "gradient_clip": 0.5,
+        "eval_interval": 10000,
+        "eval_episodes": 10,
+        "final_episodes": 30,
+        "eval_seed": 55000,
+        "final_seed": 65000
+      },
+      "validation_reached": 0,
+      "median_first_step": null,
+      "validation_final_reached": 0,
+      "validation_auc": 85.6845,
+      "modes": {
+        "behaviour": {
+          "mean": 140.39333333333335,
+          "sd": 43.72877065178085,
+          "min": 92.13333333333334,
+          "solved": 0
+        },
+        "mean_greedy": {
+          "mean": 273.0733333333334,
+          "sd": 153.34839845476696,
+          "min": 129.86666666666667,
+          "solved": 2
+        },
+        "mean_sampled": {
+          "mean": 138.14,
+          "sd": 38.606865633900846,
+          "min": 101.33333333333333,
+          "solved": 0
+        }
+      }
+    },
+    {
+      "model": "Noisy-PPO, незав.",
+      "family": "PPO",
+      "condition": "noisy_ppo_independent",
+      "updated": true,
+      "primary_mode": "behaviour",
+      "config": {
+        "env": "CartPole-v1",
+        "algorithm": "noisy-ppo",
+        "steps": 300000,
+        "hidden": 64,
+        "learning_rate": 0.001,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "sigma0": 0.01,
+        "generation": "independent",
+        "workers": 4,
+        "a3c_rollout": 20,
+        "ppo_rollout": 256,
+        "ppo_epochs": 10,
+        "minibatch": 128,
+        "clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "gradient_clip": 0.5,
+        "eval_interval": 50000,
+        "eval_episodes": 10,
+        "final_episodes": 30,
+        "eval_seed": 75000,
+        "final_seed": 85000,
+        "architecture": "separate_orthogonal",
+        "anneal_learning_rate": true,
+        "adam_epsilon": 1e-05
+      },
+      "validation_reached": 10,
+      "median_first_step": 50000.0,
+      "validation_final_reached": 10,
+      "validation_auc": 460.27166666666665,
+      "modes": {
+        "behaviour": {
+          "mean": 500.0,
+          "sd": 0.0,
+          "min": 500.0,
+          "solved": 10
+        },
+        "mean_greedy": {
+          "mean": 500.0,
+          "sd": 0.0,
+          "min": 500.0,
+          "solved": 10
+        },
+        "mean_sampled": {
+          "mean": 500.0,
+          "sd": 0.0,
+          "min": 500.0,
+          "solved": 10
+        }
+      }
+    }
+  ]
+}

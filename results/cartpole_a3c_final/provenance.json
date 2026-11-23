@@ -1,0 +1,10 @@
+{
+  "git_commit": "2139e532e30d48eaecf6c84213623ca241a7cadf",
+  "git_status": " M README.md\n M REQUIREMENTS.md\n M scripts/build_final_report.py\n?? configs/cartpole_a3c_final_manifest.json\n?? configs/cartpole_a3c_tune_baseline_lr001.json\n?? configs/cartpole_a3c_tune_baseline_lr003_300k.json\n?? configs/cartpole_a3c_tune_baseline_lr003_500k.json\n?? configs/cartpole_a3c_tune_factorized_lr001.json\n?? configs/cartpole_a3c_tune_factorized_lr003_300k.json\n?? configs/cartpole_a3c_tune_factorized_lr003_500k.json\n?? configs/cartpole_a3c_tune_independent_lr001.json\n?? configs/cartpole_a3c_tune_independent_lr003_300k.json\n?? configs/cartpole_a3c_tune_independent_lr003_500k.json\n?? configs/cartpole_a3c_tuning_protocol.json\n?? configs/cartpole_ppo_confirmation.json\n?? configs/cartpole_ppo_final.json\n?? configs/cartpole_ppo_tuning.json\n?? notebooks/01.ipynb\n?? results/cartpole_a3c_final/\n?? results/cartpole_a3c_tuning/\n?? results/cartpole_dqn_final/\n?? results/cartpole_dqn_tuning/\n?? results/cartpole_dqn_tuning_cool/\n?? results/cartpole_dqn_tuning_long/\n?? results/cartpole_dqn_tuning_stable/\n?? results/cartpole_ppo_final/\n?? results/cartpole_ppo_tuning/\n?? scripts/analyze_cartpole.py\n?? scripts/build_cartpole_notebook.py\n?? scripts/cartpole_a3c_batch.py\n?? scripts/cartpole_a3c_study.py\n?? scripts/cartpole_a3c_summarize.py\n?? scripts/cartpole_ppo_experiments.py\n?? scripts/cartpole_ppo_final.py\n?? scripts/verify_cartpole.py\n?? src/noisynets/cartpole_ppo.py\n?? tests/test_cartpole_ppo.py\n?? tests/test_cartpole_verification.py\n",
+  "source_sha256": {
+    "src/noisynets/actorcritic.py": "ee8204ba5e2c917a3bfba62c714019d0ab380bbec939d93c325a4cd692be1344",
+    "src/noisynets/policy_networks.py": "c811d78eb99ecbafe89eea266c15f05b4a0a0c1a288e5bae873bad26eaa83cfc",
+    "src/noisynets/networks.py": "e1a6db618df465f516007374f5f838f1918a9ad4c1a3e71ad230d551a7603c6d",
+    "scripts/cartpole_a3c_study.py": "22a3dc940dcdbd4506f8b6d45c059b83aedec6b2bbadd46884500942ccc653ff"
+  }
+}
