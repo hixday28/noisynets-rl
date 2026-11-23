@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "seeds": [
+    400,
+    401,
+    402,
+    403,
+    404,
+    405,
+    406,
+    407,
+    408,
+    409
+  ],
+  "selection": "Настройка выбрана по последним чекпойнтам seed 300–302. Порог 475 достигнут во всех 6 запусках, включая оба режима Noisy-DQN. В итоговой серии оценивается последний чекпойнт каждого запуска.",
+  "environments": [
+    {
+      "key": "cartpole",
+      "config": {
+        "env": "CartPole-v1",
+        "steps": 160000,
+        "hidden": 64,
+        "learning_rate": 0.0003,
+        "gamma": 0.99,
+        "batch_size": 64,
+        "replay_capacity": 80000,
+        "learning_starts": 500,
+        "train_frequency": 2,
+        "target_interval": 400,
+        "epsilon_start": 1.0,
+        "epsilon_end": 0.08,
+        "epsilon_decay_steps": 16000,
+        "sigma0": 0.5,
+        "eval_interval": 10000,
+        "eval_episodes": 10,
+        "final_episodes": 30,
+        "eval_seed": 75000,
+        "final_seed": 85000,
+        "gradient_clip": 10.0,
+        "noise_cadence": "action"
+      },
+      "conditions": [
+        {
+          "key": "dqn",
+          "algorithm": "dqn",
+          "gamma": 0.99,
+          "learning_rate": 0.0005,
+          "target_tau": 0.007,
+          "sigma0": 0.05,
+          "sutton_barto_reward": true,
+          "learning_rate_end_fraction": 0.05
+        },
+        {
+          "key": "noisy",
+          "algorithm": "noisy",
+          "gamma": 0.99,
+          "learning_rate": 0.0005,
+          "target_tau": 0.007,
+          "sigma0": 0.05,
+          "sutton_barto_reward": true,
+          "learning_rate_end_fraction": 0.05
+        }
+      ]
+    }
+  ],
+  "tuning_seeds": [
+    300,
+    301,
+    302
+  ],
+  "selected_candidate": "cartpole_dqn_tuning_cool",
+  "tuning_confirmed_returns": {
+    "cool_dqn/300": {
+      "mean_weights": 500.0
+    },
+    "cool_dqn/301": {
+      "mean_weights": 500.0
+    },
+    "cool_dqn/302": {
+      "mean_weights": 500.0
+    },
+    "cool_noisy/300": {
+      "mean_weights": 500.0,
+      "resampled_noise": 500.0
+    },
+    "cool_noisy/301": {
+      "mean_weights": 500.0,
+      "resampled_noise": 500.0
+    },
+    "cool_noisy/302": {
+      "mean_weights": 500.0,
+      "resampled_noise": 500.0
+    }
+  }
+}

@@ -131,3 +131,17 @@ def test_acrobot_network_dimensions_and_parameter_counts():
 def test_invalid_noise_cadence_is_rejected():
     with pytest.raises(ValueError, match="noise_cadence"):
         Config(noise_cadence="episode").validate()
+
+
+def test_cartpole_failure_penalty_is_only_used_in_training(tmp_path):
+    config = Config(steps=75, hidden=8, batch_size=8, learning_starts=8,
+                    target_tau=0.01, learning_rate_end_fraction=0.1,
+                    sutton_barto_reward=True, eval_interval=75, eval_episodes=1,
+                    final_episodes=2, epsilon_end=1.0)
+    output = tmp_path / "cartpole"
+    training.run(config, output)
+    episodes = (output / "episodes.csv").read_text().splitlines()
+    assert len(episodes) > 1
+    assert all(line.split(",")[2] == "-1.0" for line in episodes[1:])
+    final = json.loads((output / "final_episode_details.json").read_text())
+    assert all(row["return"] == row["length"] > 0 for row in final["mean_weights"])

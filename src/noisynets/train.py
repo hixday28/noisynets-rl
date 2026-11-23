@@ -48,6 +48,9 @@ class Config:
     final_seed: int = 20000
     gradient_clip: float = 10.0
     noise_cadence: str = "action"
+    target_tau: float | None = None
+    sutton_barto_reward: bool = False
+    learning_rate_end_fraction: float = 1.0
 
     def validate(self):
         if self.algorithm not in {"dqn", "noisy", "noisy-fixed"}:
@@ -65,6 +68,12 @@ class Config:
             raise ValueError("Invalid gamma or epsilon bounds")
         if self.learning_rate <= 0 or self.sigma0 < 0 or self.gradient_clip <= 0:
             raise ValueError("Invalid learning rate, sigma0 or gradient clip")
+        if self.target_tau is not None and not 0 < self.target_tau <= 1:
+            raise ValueError("target_tau must lie in (0, 1]")
+        if self.sutton_barto_reward and self.env != "CartPole-v1":
+            raise ValueError("The Sutton–Barto reward is supported for CartPole-v1")
+        if not 0 < self.learning_rate_end_fraction <= 1:
+            raise ValueError("learning_rate_end_fraction must lie in (0, 1]")
 
 
 def epsilon_at(step: int, c: Config) -> float:
@@ -128,7 +137,7 @@ def run(c: Config, out: Path):
     torch.manual_seed(c.seed)
     torch.use_deterministic_algorithms(True)
     rng = np.random.default_rng(c.seed + 100)
-    env = gym.make(c.env)
+    env = gym.make(c.env, sutton_barto_reward=True) if c.sutton_barto_reward else gym.make(c.env)
     if not isinstance(env.action_space, gym.spaces.Discrete):
         raise ValueError("Only discrete action spaces are supported")
     obs, _ = env.reset(seed=c.seed)
@@ -205,7 +214,16 @@ def run(c: Config, out: Path):
                 optimizer.zero_grad(set_to_none=True)
                 loss.backward()
                 grad = torch.nn.utils.clip_grad_norm_(online.parameters(), c.gradient_clip)
+                if c.learning_rate_end_fraction < 1:
+                    progress = (step - c.learning_starts) / max(c.steps - c.learning_starts, 1)
+                    rate = c.learning_rate * (1 - (1 - c.learning_rate_end_fraction) * progress)
+                    for group in optimizer.param_groups:
+                        group["lr"] = rate
                 optimizer.step()
+                if c.target_tau is not None:
+                    with torch.no_grad():
+                        for target_parameter, trained_parameter in zip(target.parameters(), online.parameters()):
+                            target_parameter.lerp_(trained_parameter, c.target_tau)
                 if noisy and c.noise_cadence == "update":
                     # После обновления новый шум поведения фиксирован до следующего update.
                     online.reset_noise()
@@ -213,7 +231,7 @@ def run(c: Config, out: Path):
                 if update_id % 100 == 0:
                     updates.append({"step": step, "update": update_id, "loss": float(loss.detach()),
                                     "gradient_norm": float(grad), **online.sigma_stats()})
-            if step % c.target_interval == 0:
+            if c.target_tau is None and step % c.target_interval == 0:
                 target.load_state_dict(online.state_dict())
             if step % c.eval_interval == 0 or step == c.steps:
                 checkpoint_eval(step)
