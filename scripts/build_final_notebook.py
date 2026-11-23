@@ -101,7 +101,7 @@ def build_notebook():
             c = environment["config"]
             settings.append({
                 "Среда": c["env"], "Шаги": c["steps"], "Скрытый слой": c["hidden"],
-                "Шаг Adam": c["learning_rate"], "γ": c["gamma"],
+                "Шаг Adam": f'{c["learning_rate"]:.5f}', "γ": c["gamma"],
                 "Размер batch": c["batch_size"], "Replay": c["replay_capacity"],
                 "Разминка": c["learning_starts"], "Частота update": c["train_frequency"],
                 "Синхронизация target": c["target_interval"],

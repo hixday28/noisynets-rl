@@ -8,7 +8,8 @@ import pytest
 import torch
 
 from noisynets.actorcritic import evaluate_policy
-from noisynets.cartpole_ppo import CartPolePPOConfig, SeparateActorCritic, load_checkpoint
+from noisynets.cartpole_ppo import CartPolePPOConfig, SeparateActorCritic
+from noisynets.evaluate_policy import load_checkpoint
 
 
 CONDITIONS = [("ppo", "factorized"), ("noisy-ppo", "factorized"), ("noisy-ppo", "independent")]

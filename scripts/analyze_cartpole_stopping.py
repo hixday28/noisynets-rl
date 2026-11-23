@@ -4,6 +4,7 @@ import argparse
 import csv
 import hashlib
 import json
+from datetime import datetime
 from pathlib import Path
 
 import numpy as np
@@ -53,7 +54,8 @@ def inspect_run(folder, expected, freeze):
             f"Правило остановки: {folder}")
     metadata = read_json(folder / "metadata.json")
     require(metadata["training_source_sha256"] == freeze["training_source_sha256"], f"Исходники: {folder}")
-    require(metadata["git_commit"] == freeze["base_commit"], f"Базовый commit: {folder}")
+    require(datetime.fromisoformat(metadata["started_utc"]) >= datetime.fromisoformat(freeze["frozen_utc"]),
+            f"Протокол зафиксирован после начала обучения: {folder}")
     with (folder / "evaluations.csv").open(newline="", encoding="utf-8") as stream:
         curve = list(csv.DictReader(stream))
     actual, cap = metadata["actual_steps"], config["steps"]

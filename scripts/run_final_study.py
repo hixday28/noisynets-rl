@@ -1,10 +1,12 @@
 """Запуск расширенной серии по зафиксированному протоколу."""
 
 import argparse
+import hashlib
 import json
 import subprocess
 import sys
 from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,7 +36,33 @@ def main():
             for seed in manifest["seeds"]:
                 out = args.out / environment["key"] / condition["key"] / f"seed_{seed}"
                 jobs.append((config, values | {"seed":seed}, out))
-    (args.out / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2)+"\n")
+    serialized = json.dumps(manifest, ensure_ascii=False, indent=2) + "\n"
+    if "frozen_training_source_sha256" in manifest:
+        freeze_path = args.out / "freeze.json"
+        manifest_sha = hashlib.sha256(serialized.encode("utf-8")).hexdigest()
+        sources = {
+            name: hashlib.sha256((ROOT / "src/noisynets" / name).read_bytes()).hexdigest()
+            for name in ("train.py", "networks.py", "replay.py")
+        }
+        if sources != manifest["frozen_training_source_sha256"]:
+            raise ValueError("Исходники отличаются от зафиксированного протокола")
+        if freeze_path.exists():
+            freeze = json.loads(freeze_path.read_text())
+            if (freeze["manifest_sha256"] != manifest_sha
+                    or freeze["training_source_sha256"] != sources):
+                raise ValueError(f"Фиксация существующей серии отличается: {freeze_path}")
+        else:
+            if any(out.exists() for _, _, out in jobs):
+                raise ValueError("Для фиксации протокола обучения нужен новый каталог")
+            commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
+            freeze = {
+                "frozen_utc": datetime.now(timezone.utc).isoformat(),
+                "manifest_sha256": manifest_sha,
+                "training_source_sha256": sources,
+                "base_commit": commit,
+            }
+            freeze_path.write_text(json.dumps(freeze, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (args.out / "manifest.json").write_text(serialized, encoding="utf-8")
 
     def launch(job):
         config, requested, out = job

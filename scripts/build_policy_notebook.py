@@ -66,7 +66,9 @@ display(pd.DataFrame([{ 'Среда':e['config']['env'],'Бюджет':e['config
     'Скрытый слой':e['config']['hidden'],'Число условий':len(e['conditions']),
     'σ₀':e['config']['sigma0'],'Потоков/сред':e['config']['workers']}
     for e in manifest['environments']]))
-display(pd.DataFrame(manifest['environments'][0]['conditions']))
+settings = pd.DataFrame(manifest['environments'][0]['conditions'])
+settings['learning_rate'] = settings['learning_rate'].map(lambda rate: f'{rate:.5f}')
+display(settings)
 '''),
 md(r'''
 ## 2. Что реализовано
@@ -98,8 +100,10 @@ md(r'''
 {\pi_{old}(a_t\mid s_t,\varepsilon)}.
 \]
 
-Распределение ε не зависит от θ, поэтому сокращается в совместном отношении.
-Шум не пересэмплируется до завершения всех эпох данного rollout. До первого
+Распределение ε при начале rollout не зависит от θ. Его плотность сокращается
+в отношении правдоподобий всей траектории вместе с ε. PPO использует условное
+отношение вероятностей действия при заданных состоянии и ε.
+Шум сохраняется до завершения всех эпох данного rollout. До первого
 обновления код проверяет log-ratio≈0. Коэффициенты μ и σ при оптимизации меняются.
 Noisy-PPO — описанная здесь интеграция для курсовой, а не модель из статьи2018г.
 '''),

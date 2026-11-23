@@ -42,13 +42,14 @@ python scripts/analyze_cartpole_stopping.py --verify
 python scripts/execute_notebook.py notebooks/04_cartpole.ipynb
 ```
 
-Новые обучения запускаются по зафиксированным манифестам. Выходной каталог задаётся отдельно, чтобы сохранить опубликованные веса:
+Новые обучения запускаются по зафиксированным манифестам в отдельных каталогах.
 
 ```bash
 python scripts/run_final_study.py --manifest "$PWD/configs/cartpole_dqn_final.json" --out "$PWD/results/reproduced-cartpole-dqn"
 python scripts/cartpole_a3c_batch.py --out "$PWD/results/reproduced-cartpole-a3c"
 python scripts/cartpole_ppo_final.py --out "$PWD/results/reproduced-cartpole-ppo"
 python scripts/run_final_study.py --manifest "$PWD/configs/cartpole_dqn_stopping.json" --out "$PWD/results/reproduced-cartpole-stopping"
+python scripts/analyze_cartpole_stopping.py --results results/reproduced-cartpole-stopping --verify
 ```
 
 ## Исходная серия A3C и PPO
@@ -183,6 +184,7 @@ python -m noisynets.policy_analysis --results results/reproduced-policy --out re
 python -m noisynets.evaluate results/final/acrobot/noisy/seed_100/model.pt --episodes 30 --seed 50000
 python -m noisynets.evaluate results/final/acrobot/noisy/seed_100/model.pt --episodes 30 --seed 50000 --noise
 python -m noisynets.evaluate_policy results/policy/acrobot/noisy_ppo_factorized/seed_200/model.pt --mode behaviour --episodes 30 --seed 75000
+python -m noisynets.evaluate_policy results/cartpole_ppo_final/noisy_ppo_factorized/seed_400/model.pt --mode behaviour --episodes 30 --seed 85000
 ```
 
 Готовые запуски пропускаются при совпадении настроек; незавершённые каталоги не перезаписываются. Для новой серии нужен новый `--out`. Чекпойнты сохраняют модель и конфигурацию, но не оптимизатор и replay: они предназначены для оценки, а не продолжения прерванного обучения.
